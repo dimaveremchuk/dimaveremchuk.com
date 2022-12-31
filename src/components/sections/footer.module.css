@@ -1,0 +1,40 @@
+.wrapper {
+  margin-top: 160px;
+}
+
+.content {
+  border-top: 1px solid hsl(var(--subtle-grey-color));
+  padding: 32px 0;
+  display: grid;
+  grid-gap: 24px;
+  font: var(--body-small);
+}
+
+.contact {
+  max-width: 375px;
+}
+
+@media screen and (min-width: 600px) {
+  .wrapper {
+    margin-top: 200px;
+  }
+
+  .content {
+    grid-template-columns: 1fr max-content;
+    padding: 40px 0;
+    padding-bottom: 64px;
+  }
+
+  .copyright {
+    align-self: end;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  /* .content {
+    grid-template-columns: repeat(3, 1fr);
+  } */
+
+  .copyright {
+  }
+}

@@ -1,0 +1,206 @@
+@font-face {
+  font-family: Antarctica;
+  src: url(../fonts/Antarctica-VF.woff2) format('woff2');
+  font-stretch: 85%;
+}
+
+:root {
+  --header-one: 350 clamp(48px, 6vw, 86px)/calc(1em + 4px) 'Antarctica', sans-serif;
+  --header-one-spacing: -0.04em;
+  --header-three: 350 clamp(32px, 2.7vw, 40px)/calc(1em + 4px) 'Antarctica', sans-serif;
+  --header-three-spacing: -0.01em;
+  --header-four: 350 clamp(24px, 2vw, 28px)/calc(1em + 6px) 'Antarctica', sans-serif;
+  --body: 350 19px/30px 'Antarctica', sans-serif;
+  --body-small: 350 16px/24px 'Antarctica', sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground-color: 0, 0%, 0%;
+    --background-color: 0, 0%, 100%;
+    --grey-color: 209, 6%, 73%;
+    --subtle-grey-color: 209, 3%, 97%;
+  }
+
+  #app-icon-fill {
+    fill: hsl(250, 54%, 56%);
+  }
+
+  #app-icon-outline {
+    stroke: hsl(251, 100%, 87%);
+  }
+
+  #screen-background {
+    fill: hsl(0, 0%, 100%);
+  }
+
+  #status-bar-outline {
+    stroke: hsl(0, 0%, 0%);
+  }
+
+  #status-bar-fill {
+    fill: hsl(0, 0%, 0%);
+  }
+
+  #placeholder-text {
+    fill: hsl(230, 6%, 69%);
+  }
+
+  #svg-purple-cursor {
+    fill: hsl(250, 46%, 59%);
+  }
+
+  #phone-outer-border {
+    fill: hsl(0, 0%, 47%);
+    stroke: hsla(0, 0%, 83%);
+  }
+
+  #antenna {
+    fill: hsl(0, 0%, 47%);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-color: 0, 0%, 100%;
+    --background-color: 198, 8%, 8%;
+    --grey-color: 209, 11%, 51%;
+    --subtle-grey-color: 198, 8%, 12%;
+    --header-one: 300 clamp(48px, 6vw, 86px)/calc(1em + 4px) 'Antarctica', sans-serif;
+    --header-three: 300 clamp(32px, 2.7vw, 40px)/calc(1em + 4px) 'Antarctica', sans-serif;
+    --header-four: 300 clamp(24px, 2vw, 28px)/calc(1em + 6px) 'Antarctica', sans-serif;
+    --body: 300 19px/30px 'Antarctica', sans-serif;
+    --body-small: 300 16px/24px 'Antarctica', sans-serif;
+  }
+
+  #svg-purple-cursor {
+    fill: hsl(240, 100%, 79%);
+  }
+
+  #app-icon-fill {
+    fill: hsl(240, 63%, 72%);
+  }
+
+  #app-icon-outline {
+    stroke: hsl(240, 81%, 84%);
+  }
+
+  #app-icon-logo {
+    fill: hsl(var(--background-color));
+  }
+
+  #logo-text {
+    fill: hsl(230, 1%, 96%);
+  }
+
+  #logo-form {
+    fill: hsl(240, 63%, 72%);
+  }
+
+  #grid-line {
+    stroke: hsl(var(--grey-color));
+  }
+
+  #text {
+    fill: hsl(var(--foreground-color));
+  }
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+        box-sizing: border-box;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+        font: var(--body);
+        color: hsl(var(--foreground-color));
+        font-family: Antarctica, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: hsl(var(--background-color));
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a {
+  color: hsl(var(--foreground-color));
+  text-decoration: none;
+}
+
+.deemphasized {
+  color: hsl(var(--grey-color));
+}
+
+.allCaps {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 17px;
+  font-weight: 500;
+}
+
+#svg-purple-cursor {
+  animation: blink 1.5s infinite;
+  -webkit-animation: blink 1.5s infinite;
+}
+
+#svg-placeholder-area:hover {
+  cursor: text;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 100%;
+  }
+
+  49% {
+    opacity: 100%
+  }
+
+  50% {
+    opacity: 0%;
+  }
+
+  99% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
