@@ -1,5 +1,3 @@
-<h1 align="center">
-  Dima Veremchuk — product designer.
-</h1>
+##Dima Veremchuk — product designer.
 
-## My personal website
+My personal website
