@@ -1,3 +1,3 @@
-##Dima Veremchuk — product designer.
+## Dima Veremchuk — product designer.
 
 My personal website
