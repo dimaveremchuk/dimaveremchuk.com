@@ -18,10 +18,10 @@ function Footer() {
           Smile, you look good today ;)
         </p> */}
         <p className={contact}>
-          <span className="deemphasized">If you have a project, want to collaborate or just say hi, write me to </span><Link to="mailto:verd@hey.com" className={email}>verd@hey.com</Link>
+          <span className="deemphasized">If you have an interesting project, want to collaborate or just say hi, write me at </span><Link to="mailto:verd@hey.com" className={email}>verd@hey.com</Link>
         </p>
         <div className={clsx(copyright, "deemphasized")}>
-          &copy; Dima Veremchuk, 2022
+          &copy; Dima Veremchuk, {new Date().getFullYear()}
         </div>
       </div>
     </div>

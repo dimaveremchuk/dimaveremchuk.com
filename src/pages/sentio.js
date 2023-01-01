@@ -43,13 +43,20 @@ function Sentio() {
           <Header />
         </div>
         <div className={aboveTheFoldImage}>
-          <StaticImage
-            alt="Image of the phone with 7 app icons and a widget"
-            src="../images/sentio/above-the-fold.png"
-            loading="eager"
-            objectFit="contain"
-            className={phoneImage}
-          />
+          { preferredTheme == "dark" ?
+            <StaticImage
+              alt="Image of the phone with 7 app icons and a widget"
+              src="../images/sentio/above-the-fold-dark.png"
+              objectFit="contain"
+              className={phoneImage}
+            /> :
+            <StaticImage
+              alt="Image of the phone with 7 app icons and a widget"
+              src="../images/sentio/above-the-fold.png"
+              objectFit="contain"
+              className={phoneImage}
+            />
+          }
         </div>
       </div>
       <div className={wrapper}>

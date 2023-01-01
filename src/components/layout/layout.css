@@ -123,6 +123,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
+  font-variation-settings: 'wght' 350;
 	font: inherit;
 	vertical-align: baseline;
         box-sizing: border-box;
@@ -172,6 +173,11 @@ a {
   letter-spacing: 0.05em;
   line-height: 17px;
   font-weight: 500;
+  font-variation-settings: 'wght' 500;
+}
+
+.badStuff:hover {
+  cursor: progress;
 }
 
 #svg-purple-cursor {

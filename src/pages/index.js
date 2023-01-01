@@ -28,6 +28,7 @@ import {
   gridCell,
   cursorImage,
   headerWrapper,
+  footerContent,
 } from "./styles/index.module.css"
 
 function IndexPage() {
@@ -290,9 +291,11 @@ function IndexPage() {
               </Link>
               <Link to="/sentio" className={projectInfo}>
                 <h3 className={mediumHeader}>Sentio<br /><span className="deemphasized">utility mobile apps</span></h3>
-                <p className={projectDescription}>Various utility mobile apps that help solving tiny problems people have. Nothing fancy, just simple apps.</p>
-                <p className={clsx("deemphasized", projectRole)}>Product UI/UX
-                  </p>
+                <p className={projectDescription}>Assorted simple utility mobile apps.</p>
+                <p className={clsx("deemphasized", projectRole)}>
+                  Product UI/UX<br />
+                  Iconography
+                </p>
                 <p className={clsx("deemphasized", period)}>2021–now</p>
               </Link>
             </div>
@@ -316,7 +319,7 @@ function IndexPage() {
               </Link>
               <Link to="/cuddlynest-mobile" className={projectInfo}>
                 <h3 className={mediumHeader}>Cuddlynest<br /><span className="deemphasized">native mobile experience</span></h3>
-                <p className={projectDescription}>Cross-platform mobile application for cuddlynest</p>
+                <p className={projectDescription}>Cross-platform mobile application for cuddlynest service</p>
                 <p className={clsx("deemphasized", projectRole)}>Product UI/UX</p>
                 <p className={clsx("deemphasized", period)}>2021</p>
               </Link>
@@ -324,7 +327,9 @@ function IndexPage() {
 
           </div>
         </div>
-        <Footer />
+        <div className={footerContent}>
+          <Footer />
+        </div>
       </div>
     </Layout>
   )

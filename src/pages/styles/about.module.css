@@ -74,6 +74,15 @@
   cursor: none;
 }
 
+.webLink {
+  border-bottom: 1px solid hsl(var(--grey-color));
+  transition: border .15s ease;
+}
+
+.webLink:hover {
+  border-bottom-color: hsl(var(--foreground-color));
+}
+
 @keyframes heart-pump {
   0% {
     transform: scale(1);

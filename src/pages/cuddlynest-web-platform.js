@@ -76,9 +76,9 @@ function CuddlynestWeb() {
                   the future of travel
                 </span>
               </h1>
-              <p>Online travel accommodation startup with a vision to make people's booking experience easy and effortless to focus on their travel (and not care about the accommodation).</p>
+              <p>Online travel accommodation startup with a vision to make people's booking experience easy and effortless to let them focus on their travel.</p>
               <div className={clsx(comment, "deemphasized")}>
-                Due to COVID-19 and various other reasons the product has never launched as intended
+                * Due to COVID-19 and various other reasons the product has never launched as intended.
               </div>
             </div>
           </section>
@@ -90,14 +90,14 @@ function CuddlynestWeb() {
                 </h2>
                 <div className={paragraph}>
                   <p>
-                    The team has been building the product since 2017. The product is not well defined, lacks intention and in the nutshell is a sum of various online travel agencies (from Airbnb to Booking.com) parts.</p>
-                  <p>That was a situation when I was hired in 2019 as a first designer on the team to help with a visual design. As a sole designer in the company I was granted a permission to shape the product however I want.</p>
-                  <p>Working closely with CEO I’ve started with outlining the problems the product has:
+                    By the time I join, the team has been building the product for two years since 2017. The product is not well defined, lacks intention and in the nutshell is a sum of different parts of various online travel agencies from Airbnb to Booking.com.</p>
+                  <p>That was the situation when I was hired in 2019 as a first designer on the team to help with a visual design. As a sole designer in the company I was also granted a permission to shape the product however I want.</p>
+                  <p>Working closely with CEO I start with outlining the problems the product has:
                   </p>
                   <ul className={unorderedList}>
                     <li>Lack of intention. What are the core values we live by, how do we want to help our users?</li>
                     <li>Lack of focus and uniqueness. Why would anyone picked us instead of competing online travel agencies?</li>
-                    <li>Lack of design language and system. No designer prior to me ever worked on a product.</li>
+                    <li>Lack of design language and system. No designer prior to me ever worked on a product, hence usability and visuals are quite underwhelming.</li>
                   </ul>
                 </div>
               </div>
@@ -127,9 +127,9 @@ function CuddlynestWeb() {
             <div className={clsx(internalContainer)}>
               <div className={highlights}>
                 <p className={highlight}>
-                  Trip types. <span className="deemphasized">I’ve interviewed my friends and colleagues, and the revelation was that every person had various types of trip, which change the requirements for accommodation. Today she meets with business partner in Singapore, next month goes to Crete with her family for 2 weeks vacation and in three months flies to Mexico with colleagues for company meet up.</span></p>
+                  Trip types. <span className="deemphasized">After interviewing my colleagues and friends, I've realized that every person has various types of trip, which changes the requirements for accommodation in every case. Today she meets with business partner in Singapore, next month goes to Crete with her family for 2 weeks vacation and in three months flies to Mexico with colleagues for company meet up.</span></p>
                 <p className={highlight}>
-                  Every such trip type is unique and requires different approach. <span className="deemphasized">Though each trip was unique, after several interviews and reflection on my experience I recognized common patterns. Thus I grouped trips into six distinct yet wide enough trip types to accommodate all the experiences.</span>
+                  Every such trip type is unique. <span className="deemphasized">After several interviews and reflection on my own experience I recognized common patterns, even though each trip was unique. I grouped trips into six distinct yet wide enough trip types to fit most of the experiences.</span>
                 </p>
                 </div>
               <div className={clsx(images)}>
@@ -171,7 +171,7 @@ function CuddlynestWeb() {
             <div className={clsx(internalContainer)}>
               <div className={clsx(leftAligned)}>
                 <p className={highlight}>
-                  Search may be as precise or as vague as traveller wants. <span className="deemphasized">Product understands and respects that people have different trip types ahead, they are on a different stage of their journey planning. At any moment traveller may add or remove details to their accommodation search.</span>
+                  Search may be as precise or as vague as traveller wants. <span className="deemphasized">Product understands and respects that people have different trip types ahead and at the time of visting a website they are on a different stage of their journey planning. At any moment traveller may add or remove details to their accommodation search.</span>
                 </p>
               </div>
               <div className={clsx(images)}>
@@ -198,7 +198,7 @@ function CuddlynestWeb() {
             <div className={clsx(internalContainer)}>
               <div className={clsx(rightAligned)}>
                 <p className={highlight}>
-                  Everything is in it’s right place. <span className="deemphasized">Whether traveller or property owner interface is designed to show the actions that person most likely want to use at the moment.</span>
+                  Everything is in it’s right place. <span className="deemphasized">For both property owners and guests interface is designed in a way to show the actions that person most likely want to use at the moment.</span>
                 </p>
               </div>
               <div className={clsx(images)}>
@@ -249,7 +249,7 @@ function CuddlynestWeb() {
             <div className={clsx(internalContainer)}>
               <div className={clsx(leftAligned)}>
                 <p className={highlight}>
-                  Fully responsive. <span className="deemphasized">Designed to be easy to use on whatever screen size person has—mobile, tablet, desktop.</span>
+                  Fully responsive. <span className="deemphasized">Designed to be easy to use on whatever screen size person has—mobile, tablet or desktop.</span>
                 </p>
               </div>
               <div className={clsx(images)}>
@@ -297,7 +297,7 @@ function CuddlynestWeb() {
                     I wanted the product to feel approachable, down-to-earth, imputing travel, exploration and joy. I've tried to achieve that via typography, colors, imagery and copy (with the help of copywriters of course).
                   </p>
                   <p className={clsx(comment, "deemphasized")}>
-                    I’m not a brand designer, but I had to be the one on this project being the only designer on the team
+                    * I’m not a brand designer, but being the only designer on the team, I had to be one here.
                   </p>
                 </div>
               </div>
@@ -332,7 +332,7 @@ function CuddlynestWeb() {
             <div className={clsx(internalContainer)}>
               <div className={clsx(leftAligned)}>
                 <p className={highlight}>
-                  Typography. <span className="deemphasized">I needed something approachable, friendly and modern. Besides selected type should work in both big and small sizes, in interfaces and branding. I've picked Fira Sans — versatile humanist open-source typeface created by Erik Spiekermann. The typeface looks more humane than widely used grotesques, it is free, well designed and supports many languages. Typeface works in display, text and micro sizes (with slight letter spacing adjustments).</span>
+                  Typography. <span className="deemphasized">I needed something approachable, friendly and modern. Besides selected type should work in both big and small sizes, in interfaces and branding. I've picked Fira Sans — versatile humanist open-source typeface created by Erik Spiekermann. The typeface looks more humane than widely used grotesques or geometric sans-serifs. It is free, well designed and supports many languages. Typeface works in display, text and micro sizes (with minor letter spacing adjustments).</span>
                 </p>
               </div>
               <div className={clsx(images)}>
