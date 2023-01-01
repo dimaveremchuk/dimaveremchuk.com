@@ -6,7 +6,6 @@ import clsx from "clsx"
 import { useMediaPredicate } from "react-media-hook"
 import { StaticImage } from 'gatsby-plugin-image'
 import CuddlynestAppIcon from "../svg/cuddlynest-app-icon.svg"
-import PhoneFrame from "../svg/iPhone-13-light.svg"
 import PhoneTopPart from "../svg/cuddlynest-iphone-above-the-fold.svg"
 import {
   aboveTheFold,
@@ -45,55 +44,6 @@ function CuddlynestMobile() {
         <div className={aboveTheFoldImage}>
           <CuddlynestAppIcon className={appIcon} />
           <PhoneTopPart className={aboveTheFoldPhone} />
-          {/* { preferredTheme == 'dark' ?
-            <StaticImage
-              alt="Cuddlynest mobile app icon"
-              loading="eager"
-              src="../images/cuddlynest-mobile/cuddlynest-app-icon-dark.png"
-              style={{
-                height: "clamp(136px, 35vw, 282px)",
-                width: "clamp(136px, 35vw, 282px)",
-              }}
-            /> :
-            <StaticImage
-              alt="Cuddlynest mobile app icon"
-              loading="eager"
-              src="../images/cuddlynest-mobile/cuddlynest-app-icon-light.png"
-              style={{
-                height: "clamp(136px, 35vw, 282px)",
-                width: "clamp(136px, 35vw, 282px)",
-              }}
-            />
-          }
-          { preferredTheme == 'dark' ?
-            <StaticImage
-              alt="Top part of an iPhone with search prompt"
-              loading="eager"
-              src="../images/cuddlynest-mobile/iPhone-with-search-prompt-dark.png"
-              style={{
-                width: "clamp(286px, 70vw, 552px)",
-              }}
-              imgStyle={{
-                width: "clamp(286px, 70vw, 552px)",
-              }}
-              objectFit="contain"
-              objectPosition="50% 50%"
-            /> :
-            <StaticImage
-              alt="Top part of an iPhone with search prompt"
-              loading="eager"
-              src="../images/cuddlynest-mobile/iPhone-with-search-prompt.png"
-              style={{
-                width: "clamp(286px, 70vw, 552px)",
-              }}
-              imgStyle={{
-                width: "clamp(286px, 70vw, 552px)",
-              }}
-              objectFit="contain"
-              objectPosition="50% 50%"
-            /> 
-          }
-          */}
         </div>
       </div>
       <div className={wrapper}>
@@ -123,7 +73,7 @@ function CuddlynestMobile() {
           <section className={clsx(externalContainer)}>
             <div className={internalContainer}>
               <p className={highlight}>
-                Mobile app should be more convenient way for travelers to find and manage their accommodation. <span className="deemphasized">The app would be downloaded by people who are already familiar with Cuddlynest brand and most probably they've already booked an accommodation with cuddlynest at least once.</span>
+                Mobile app should be more convenient way for travelers to find and manage their accommodation. <span className="deemphasized">The app would be downloaded by people who are already familiar with cuddlynest brand and most probably they've already booked an accommodation with cuddlynest at least once.</span>
               </p>
               <div className={images}>
                 <StaticImage

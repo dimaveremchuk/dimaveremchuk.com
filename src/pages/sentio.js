@@ -70,6 +70,7 @@ function Sentio() {
                 <li>UI/UX</li>
                 <li>Product</li>
                 <li>Branding</li>
+                <li>Iconography</li>
               </ul>
             </div>
             <div className={introContent}>
@@ -80,7 +81,7 @@ function Sentio() {
                 </span>
               </h1>
               <p>
-                In Sentio I’ve been designing a number of mobile apps. The goal was to quickly test the ideas. If the app strives, double down the efforts, if not, abandon and switch to another app. With such approach I have a good opportunity to practice, fail and start again often. Over time quantity started to transform into quality.
+                In Sentio I’ve been designing a number of mobile apps. The goal is to quickly iterate through the ideas. If the app strives, double down the efforts, if not, abandon and switch to another one. With such approach I have a good opportunity to practice, fail and start again often. Over time quantity starts to transform into quality.
               </p>
             </div>
           </section>
@@ -92,10 +93,10 @@ function Sentio() {
                 </h2>
                 <div className={paragraph}>
                   <p>
-                    My latest design. Fasting is beneficial for people’s health. People in ancient times did it and there is lot of contemporary research confirming that.
+                    My latest design.
                   </p>
                   <p>
-                    I personally been regularly fasting for several years now, that is why I was happy to find out we are building the fasting tracker at Sentio. It won’t be an overexaggeration to say that it is the favorite app I designed in Sentio.
+                    Being a regular faster myself for several years now, I was happy to find out we are building the fasting tracker at Sentio. It won’t be an overexaggeration to say that it is the favorite app I designed in Sentio so far.
                   </p>
                   <p>
                     Though there is quite a number of fasting tracking apps, many of them are too complicated. I wanted to make our app as simple as possible, which in my opinion is gonna help to form the habit to people using the app.
@@ -173,7 +174,7 @@ function Sentio() {
             </div>
             <div className={clsx(internalContainer, leftAligned)}>
               <p className={highlight}>
-                Iconography. <span className="deemphasized">Bold filled icons and simple forms support interface the best. I aspired to ensure the best readability and quick recognition process for users.</span>
+                Iconography. <span className="deemphasized">Bold filled icons and simple forms support interface the best. I aspired to ensure the best readability and quick recognition for users.</span>
               </p>
               <div className={images}>
                 { preferredTheme == "dark" ?
@@ -308,7 +309,7 @@ function Sentio() {
                     I've also designed second phone number app, various PDF related apps and fax app. All of them have limited purposes that are clearly understandable through the focused interface.
                   </p>
                   <p>
-                    In two apps due to time constraints I’ve used great ready-made icons from SF Symbols and Microsoft Fluent system, in all others all icons are made from scratch.
+                    In two apps due to time constraints I’ve used great ready-made icons from SF Symbols and Microsoft Fluent system, in all others the icons are made from scratch.
                   </p>
                 </div>
               </div>
