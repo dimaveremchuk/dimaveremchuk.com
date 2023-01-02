@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout/layout"
 import Header from "../components/sections/header"
 import Footer from "../components/sections/footer"
+import { SEO } from "../components/seo"
 import HeartIcon from "../svg/heart-icon.svg"
 import { Link } from "gatsby"
 import clsx from "clsx"
@@ -145,3 +146,7 @@ function AboutPage() {
 }
 
 export default AboutPage
+
+export const Head = () => (
+  <SEO title="About" />
+)

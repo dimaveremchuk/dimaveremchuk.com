@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout/layout"
 import Header from "../components/sections/header"
 import Footer from "../components/sections/footer"
+import { SEO } from "../components/seo"
 import clsx from "clsx"
 import LogoBig from "../svg/cn-logo.svg"
 import TypographyImage from "../svg/typography.svg"
@@ -364,3 +365,7 @@ function CuddlynestWeb() {
 }
 
 export default CuddlynestWeb
+
+export const Head = () => (
+  <SEO title="Cuddlynest web platform case study" />
+)

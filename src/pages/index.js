@@ -2,6 +2,7 @@ import * as React from "react"
 import Layout from "../components/layout/layout"
 import Header from "../components/sections/header"
 import Footer from "../components/sections/footer"
+import { SEO } from "../components/seo"
 import { useMediaPredicate } from "react-media-hook"
 import { Link } from "gatsby"
 import clsx from "clsx"
@@ -45,7 +46,7 @@ function IndexPage() {
             <StaticImage
               className={cursorImage}
               alt="Big image of mouse cursor"
-              loading="eager"
+              loading="lazy"
               src="../images/home/cursor.png"
             />
             <div className={gridBackground}>
@@ -336,3 +337,7 @@ function IndexPage() {
 }
 
 export default IndexPage
+
+export const Head = () => (
+  <SEO />
+)

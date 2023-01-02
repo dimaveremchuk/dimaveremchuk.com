@@ -35,7 +35,7 @@
 .smallerHeader {
   font: var(--header-three);
   letter-spacing: var(--header-three-spacing);
-  margin: clamp(104px, 20vw, 256px) 0 clamp(52px, 10vw, 128px) 0;
+  margin: clamp(104px, 20vw, 200px) 0 clamp(52px, 10vw, 100px) 0;
   max-width: 712px;
 }
 

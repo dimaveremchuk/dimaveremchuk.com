@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout/layout"
 import Header from "../components/sections/header"
 import Footer from "../components/sections/footer"
+import { SEO } from "../components/seo"
 import clsx from "clsx"
 import { useMediaPredicate } from "react-media-hook"
 import { StaticImage } from 'gatsby-plugin-image'
@@ -199,3 +200,7 @@ function CuddlynestMobile() {
 }
 
 export default CuddlynestMobile
+
+export const Head = () => (
+  <SEO title="Cuddlynest mobile app case study" />
+)
