@@ -63,7 +63,7 @@ function AboutPage() {
                     With the product design being my core competence and passion, I tinker with iOS native development, front-end development, graphic design and 3D.
                   </p>
                   <p className={clsx(emphasized, loveText)}>
-                    I love what I do
+                    I&nbsp;love&nbsp;what&nbsp;I&nbsp;do
                     <HeartIcon className={heartIcon} />
                   </p>
                 </div>
