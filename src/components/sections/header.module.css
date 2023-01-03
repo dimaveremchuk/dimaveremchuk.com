@@ -15,6 +15,7 @@
   font: var(--body);
   text-transform: none;
   letter-spacing: 0;
+  font-variation-settings: 'wght' 350;
 }
 
 @media screen and (min-width: 600px) {
