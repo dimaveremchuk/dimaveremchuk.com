@@ -199,8 +199,13 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  .aboveTheFold {
+    height: 100vh;
+    max-height: 900px;
+  }
+
   .motto {
-    margin-bottom: 10vh;
+    margin-bottom: 40px;
   }
 
   .wideProject {
