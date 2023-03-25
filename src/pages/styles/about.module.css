@@ -1,7 +1,7 @@
 .wrapper {
   /* margin-top: 40px; */
   max-width: 1440px;
-  margin: 40px auto 0 auto;
+  margin: 32px auto 0 auto;
 }
 
 .content {
@@ -234,6 +234,10 @@
 @media screen and (min-width: 600px) {
   .content {
     padding: 0;
+  }
+
+  .wrapper {
+    margin-top: 40px;
   }
 }
 
