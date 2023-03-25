@@ -72,14 +72,26 @@ function AboutPage() {
               <h2 className={clsx(h2Header, "allCaps deemphasized")}>Experience</h2>
               <div className={workPlaces}>
                 <div className={workPlace}>
+                  <h3 className={employer}>Whitespectre</h3>
+                  <div className={role}>
+                    UX/UI designer
+                  </div>
+                  <div className={clsx(period, "deemphasized")}>
+                    2023–now
+                  </div>
+                  <div className={clsx(description, "deemphasized")}>
+                    Design interfaces for complex web and mobile apps.
+                  </div>
+                </div>
+                <div className={workPlace}>
                   <h3 className={employer}>Sentio</h3>
                   <div className={role}>
                     Product designer
                   </div>
                   <div className={clsx(period, "deemphasized")}>
-                    2021–now
+                    2021–2023
                   </div>
-                  <div className={description}>
+                  <div className={clsx(description, "deemphasized")}>
                     Design simple utility apps for mobile—iPhone, iPad, Android phones and tablets.
                   </div>
                 </div>
@@ -91,7 +103,7 @@ function AboutPage() {
                   <div className={clsx(period, "deemphasized")}>
                     2019–2021
                   </div>
-                  <div className={description}>
+                  <div className={clsx(description, "deemphasized")}>
                     Designing and shaping the platform for the future of the accommodation booking.
                   </div>
                 </div>
@@ -103,7 +115,7 @@ function AboutPage() {
                   <div className={clsx(period, "deemphasized")}>
                     2018–2020
                   </div>
-                  <div className={description}>
+                  <div className={clsx(description, "deemphasized")}>
                     Various web and mobile design projects
                   </div>
                 </div>
