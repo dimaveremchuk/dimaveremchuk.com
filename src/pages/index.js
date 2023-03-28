@@ -326,6 +326,7 @@ function IndexPage() {
                       loading="lazy"
                       src="../images/home/cuddlynest-mobile-app-dark.png"
                       objectFit="contain"
+                      style={{ position: 'absolute' }}
                     /> :
                     <StaticImage
                       className={imageCNMobile}
@@ -333,6 +334,7 @@ function IndexPage() {
                       loading="lazy"
                       src="../images/home/cuddlynest-mobile-app.png"
                       objectFit="contain"
+                      style={{ position: 'absolute' }}
                     />
                   }
                 </div>
