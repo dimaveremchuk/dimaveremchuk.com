@@ -30,6 +30,11 @@ import {
   cursorImage,
   headerWrapper,
   footerContent,
+  arrow,
+  link,
+  imageSentio,
+  imageCNWeb,
+  imageCNMobile,
 } from "./styles/index.module.css"
 
 function IndexPage() {
@@ -40,7 +45,7 @@ function IndexPage() {
       <div className={wrapper}>
         <div className={aboveTheFold}>
           <div className={headerWrapper}>
-            <Header details="living in Porto and currently designing mobile apps in Sentio" />
+            <Header details="living in Porto and currently designing interfaces at Whitespectre" />
           </div>
           <div className={heroImage}>
             <StaticImage
@@ -253,77 +258,95 @@ function IndexPage() {
         <div className={highlightsSection}>
           <h2 className={clsx(smallHeader, "allCaps deemphasized")}>Select works</h2>
           <div className={highlightsContent}>
-            <div className={clsx(project, wideProject)}>
-              <Link to="/cuddlynest-web-platform">
-                <StaticImage
-                  className={projectImage}
-                  alt="Image of a laptop with a types of trips and search button"
-                  loading="lazy"
-                  src="../images/home/cuddlynest-web-app.png"
-                />
-              </Link>
-              <Link to="/cuddlynest-web-platform" className={projectInfo}>
-                <h3 className={mediumHeader}>Cuddlynest<br /><span className="deemphasized">web platform</span></h3>
-                <p className={projectDescription}>The future of travel accommodation booking. More humane way to find and book the accommodation for your travel.</p>
-                  <p className={clsx(projectRole, "deemphasized")}>
-                    Product UI/UX<br />
-                    Branding
-                  </p>
-                <p className={clsx("deemphasized", period)}>2019–2021</p>
-              </Link>
-            </div>
-
             <div className={project}>
               <Link to="/sentio">
-                { preferredTheme == 'dark' ?
-                  <StaticImage
-                    className={projectImage}
-                    alt="Image of a phone with multiple apps and a widget on it's screen"
-                    loading="lazy"
-                    src="../images/home/sentio-mobile-apps-dark.png"
-                  /> :
-                  <StaticImage
-                    className={projectImage}
-                    alt="Image of a phone with multiple apps and a widget on it's screen"
-                    loading="lazy"
-                    src="../images/home/sentio-mobile-apps.png"
-                  /> 
-                }
+                <div className={projectImage}>
+                  { preferredTheme == 'dark' ?
+                    <StaticImage
+                      className={imageSentio}
+                      alt="Image of a phone with multiple apps and a widget on it's screen"
+                      loading="lazy"
+                      src="../images/home/sentio-mobile-apps-dark.png"
+                      objectFit="contain"
+                    /> :
+                    <StaticImage
+                      className={imageSentio}
+                      alt="Image of a phone with multiple apps and a widget on it's screen"
+                      loading="lazy"
+                      src="../images/home/sentio-mobile-apps.png"
+                      objectFit="contain"
+                    /> 
+                  }
+                </div>
               </Link>
-              <Link to="/sentio" className={projectInfo}>
-                <h3 className={mediumHeader}>Sentio<br /><span className="deemphasized">utility mobile apps</span></h3>
-                <p className={projectDescription}>Assorted simple utility mobile apps.</p>
-                <p className={clsx("deemphasized", projectRole)}>
-                  Product UI/UX<br />
-                  Iconography
-                </p>
-                <p className={clsx("deemphasized", period)}>2021–now</p>
-              </Link>
+              <div className={projectInfo}>
+                <Link to="/sentio" className={link}>
+                  <h3 className={mediumHeader}>Sentio mobile apps
+                    <span className={arrow}>
+                      →
+                    </span>
+                  </h3>
+                </Link>
+                  <p className={clsx(projectDescription, "deemphasized")}>Assorted simple utility mobile apps</p>
+              </div>
             </div>
+
+            <div className={clsx(project)}>
+              <Link to="/cuddlynest-web-platform">
+                <div className={projectImage}>
+                  <StaticImage
+                    className={imageCNWeb}
+                    alt="Image of a laptop with a types of trips and search button"
+                    loading="lazy"
+                    src="../images/home/cuddlynest-web-app.png"
+                    objectFit="contain"
+                  />
+                </div>
+              </Link>
+              <div className={projectInfo}>
+                <Link to="/cuddlynest-web-platform" className={link}>
+                  <h3 className={mediumHeader}>Cuddlynest web platform 
+                    <span className={arrow}>
+                      →
+                    </span>
+                  </h3>
+                </Link>
+                <p className={clsx(projectDescription, "deemphasized")}>Travel accommodation booking platform</p>
+              </div>
+            </div>
+
 
             <div className={project}>
               <Link to="/cuddlynest-mobile">
-                { preferredTheme == 'dark' ?
-                  <StaticImage
-                    className={projectImage}
-                    alt="Image of an app icon and the top part of the phone with search prompt"
-                    loading="lazy"
-                    src="../images/home/cuddlynest-mobile-app-dark.png"
-                  /> :
-                  <StaticImage
-                    className={projectImage}
-                    alt="Image of an app icon and the top part of the phone with search prompt"
-                    loading="lazy"
-                    src="../images/home/cuddlynest-mobile-app.png"
-                  />
-              }
+                <div className={projectImage}>
+                  { preferredTheme == 'dark' ?
+                    <StaticImage
+                      className={imageCNMobile}
+                      alt="Image of an app icon and the top part of the phone with search prompt"
+                      loading="lazy"
+                      src="../images/home/cuddlynest-mobile-app-dark.png"
+                      objectFit="contain"
+                    /> :
+                    <StaticImage
+                      className={imageCNMobile}
+                      alt="Image of an app icon and the top part of the phone with search prompt"
+                      loading="lazy"
+                      src="../images/home/cuddlynest-mobile-app.png"
+                      objectFit="contain"
+                    />
+                  }
+                </div>
               </Link>
-              <Link to="/cuddlynest-mobile" className={projectInfo}>
-                <h3 className={mediumHeader}>Cuddlynest<br /><span className="deemphasized">native mobile experience</span></h3>
-                <p className={projectDescription}>Cross-platform mobile application for cuddlynest service</p>
-                <p className={clsx("deemphasized", projectRole)}>Product UI/UX</p>
-                <p className={clsx("deemphasized", period)}>2021</p>
-              </Link>
+              <div className={projectInfo}>
+                <Link to="/cuddlynest-mobile" className={link}>
+                  <h3 className={mediumHeader}>Cuddlynest mobile app
+                    <span className={arrow}>
+                      →
+                    </span>
+                  </h3>
+                </Link>
+                  <p className={clsx(projectDescription, "deemphasized")}>Cross-platform mobile accommodation booking app</p>
+              </div>
             </div>
 
           </div>

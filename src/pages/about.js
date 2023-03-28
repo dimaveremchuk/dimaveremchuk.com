@@ -80,7 +80,7 @@ function AboutPage() {
                     2023–now
                   </div>
                   <div className={clsx(description, "deemphasized")}>
-                    Design interfaces for complex web and mobile apps.
+                    Design interfaces for web and mobile apps.
                   </div>
                 </div>
                 <div className={workPlace}>
