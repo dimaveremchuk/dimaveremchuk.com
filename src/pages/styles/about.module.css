@@ -52,6 +52,14 @@
   grid-gap: 48px;
 }
 
+.workPlace {
+  display: grid;
+}
+
+.period {
+  grid-row: 1/1;
+}
+
 .description {
   margin-top: 8px;
 }
@@ -211,7 +219,7 @@
   }
 
   .workPlace {
-    display: grid;
+    /* display: grid; */
     grid-template-columns: repeat(5, 1fr) max-content;
     column-gap: 16px;
   }
@@ -227,7 +235,7 @@
 
   .description {
     grid-column: 1/6;
-    margin-top: 16px;
+    margin-top: 8px;
   }
 }
 

@@ -72,10 +72,7 @@ function AboutPage() {
               <h2 className={clsx(h2Header, "allCaps deemphasized")}>Experience</h2>
               <div className={workPlaces}>
                 <div className={workPlace}>
-                  <h3 className={employer}>Whitespectre</h3>
-                  <div className={role}>
-                    UX/UI designer
-                  </div>
+                  <h3 className={role}>UX/UI designer at Whitespectre</h3>
                   <div className={clsx(period, "deemphasized")}>
                     2023–now
                   </div>
@@ -84,10 +81,7 @@ function AboutPage() {
                   </div>
                 </div>
                 <div className={workPlace}>
-                  <h3 className={employer}>Sentio</h3>
-                  <div className={role}>
-                    Product designer
-                  </div>
+                  <h3 className={role}>Product designer at Sentio</h3>
                   <div className={clsx(period, "deemphasized")}>
                     2021–2023
                   </div>
@@ -96,10 +90,7 @@ function AboutPage() {
                   </div>
                 </div>
                 <div className={workPlace}>
-                  <h3 className={employer}>Cuddlynest</h3>
-                  <div className={role}>
-                    Designer
-                  </div>
+                  <h3 className={role}>Designer at Cuddlynest</h3>
                   <div className={clsx(period, "deemphasized")}>
                     2019–2021
                   </div>
@@ -108,10 +99,7 @@ function AboutPage() {
                   </div>
                 </div>
                 <div className={workPlace}>
-                  <h3 className={employer}>Freelance</h3>
-                  <div className={role}>
-                    Digital designer
-                  </div>
+                  <h3 className={role}>Digital designer freelancing</h3>
                   <div className={clsx(period, "deemphasized")}>
                     2018–2020
                   </div>
