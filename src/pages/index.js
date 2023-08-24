@@ -45,7 +45,7 @@ function IndexPage() {
       <div className={wrapper}>
         <div className={aboveTheFold}>
           <div className={headerWrapper}>
-            <Header details="living in Porto and currently designing interfaces at Whitespectre" />
+            <Header details="living in Porto and currently designing mobile apps at Sentio" />
           </div>
           <div className={heroImage}>
             <StaticImage

@@ -263,7 +263,7 @@ function Sentio() {
             </div>
             <div className={clsx(internalContainer, leftAligned)}>
               <p className={highlight}>
-                Android app. <span className="deemphasized">With a distinct design language and platform it was quite a challenge to design and Android app that would feel right.</span>
+                Android app. <span className="deemphasized">With a distinct design language and platform it was quite a challenge to design an Android app that would feel right.</span>
               </p>
               <div className={images}>
                 <StaticImage

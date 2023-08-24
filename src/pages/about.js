@@ -72,21 +72,21 @@ function AboutPage() {
               <h2 className={clsx(h2Header, "allCaps deemphasized")}>Experience</h2>
               <div className={workPlaces}>
                 <div className={workPlace}>
-                  <h3 className={role}>UX/UI designer at Whitespectre</h3>
+                  <h3 className={role}>Product designer at Sentio</h3>
                   <div className={clsx(period, "deemphasized")}>
-                    2023–now
+                    2021–now
                   </div>
                   <div className={clsx(description, "deemphasized")}>
-                    Design interfaces for web and mobile apps.
+                    Designing simple utility apps for mobile—iPhone, iPad, Android phones and tablets.
                   </div>
                 </div>
                 <div className={workPlace}>
-                  <h3 className={role}>Product designer at Sentio</h3>
+                  <h3 className={role}>UX/UI designer at Whitespectre</h3>
                   <div className={clsx(period, "deemphasized")}>
-                    2021–2023
+                    2023–2023
                   </div>
                   <div className={clsx(description, "deemphasized")}>
-                    Design simple utility apps for mobile—iPhone, iPad, Android phones and tablets.
+                    Designing interfaces for web apps.
                   </div>
                 </div>
                 <div className={workPlace}>
