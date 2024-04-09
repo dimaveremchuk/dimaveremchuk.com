@@ -46,20 +46,20 @@ import {
 function IndexPage() {
   const preferredTheme = useMediaPredicate('(prefers-color-scheme: dark)') ? 'dark' : 'light'
 
-  function Project({ styleName, path, imageDark, imageLight, imageAlt, title, subtitle }) {
+  function Project({ styleName, imageSize, path, imageDark, imageLight, imageAlt, title, subtitle }) {
     return (
       <Link to={path}>
         <div className={project}>
           <div className={clsx(projectImageContainer, styleName)}>
             { preferredTheme == 'dark' ?
               <img
-                className={projectImage}
+                className={clsx(projectImage, imageSize)}
                 src={imageDark}
                 alt={imageAlt}
                 loading="lazy"
               /> :
               <img
-                className={projectImage}
+                className={clsx(projectImage, imageSize)}
                 src={imageLight}
                 alt={imageAlt}
                 loading="lazy"
@@ -138,7 +138,7 @@ function IndexPage() {
               subtitle="Platform for selling poker converters and analytics tools"
             />
             <Project 
-              styleName={eightyPercent}
+              imageSize={eightyPercent}
               path="/sentio"
               imageDark="../../sentio-mobile-apps-dark.png"
               imageLight="../../sentio-mobile-apps.png"
