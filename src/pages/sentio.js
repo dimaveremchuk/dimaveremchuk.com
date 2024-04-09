@@ -30,6 +30,7 @@ import {
   highlight,
   leftAligned,
   phoneImage,
+  comment,
   filledIcons,
   outlinedIcons,
 } from "./styles/case.module.css"
@@ -76,7 +77,7 @@ function Sentio() {
             </div>
             <div className={introContent}>
               <h1 className={projectName}>
-                Sentio <br />
+                Sentio* <br />
                 <span className="deemphasized">
                   utility mobile apps
                 </span>
@@ -84,6 +85,9 @@ function Sentio() {
               <p>
                 In Sentio I’ve been designing a number of mobile apps. The goal is to quickly iterate through the ideas. If the app strives, double down the efforts, if not, abandon and switch to another one. With such approach I have a good opportunity to practice, fail and start again often. Over time quantity starts to transform into quality.
               </p>
+              <div className={clsx(comment, "deemphasized")}>
+                * Latest apps are not yet in case study. Update is in progress.
+              </div>
             </div>
           </section>
           <section className={externalContainer}>

@@ -22,6 +22,11 @@
     --subtle-grey-color: 209, 3%, 97%;
   }
 
+  ::selection {
+    background: hsl(202, 98%, 79%);
+    color: hsl(var(--foreground-color));
+  }
+
   #app-icon-fill {
     fill: hsl(250, 54%, 56%);
   }
@@ -71,6 +76,11 @@
     --header-four: 300 clamp(24px, 2vw, 28px)/calc(1em + 6px) 'Antarctica', sans-serif;
     --body: 300 19px/30px 'Antarctica', sans-serif;
     --body-small: 300 16px/24px 'Antarctica', sans-serif;
+  }
+
+  ::selection {
+    background: hsl(202, 79%, 55%);
+    color: hsl(var(--foreground-color));
   }
 
   #svg-purple-cursor {

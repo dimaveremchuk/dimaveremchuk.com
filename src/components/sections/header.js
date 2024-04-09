@@ -18,7 +18,7 @@ function Header(props) {
           <Link to="/">
             Dima Veremchuk
             <div className={clsx("deemphasized", bodyText)}>
-              —product designer <span className={desktop}>{props.details}</span>
+              —software designer <span className={desktop}>{props.details}</span>
             </div>
           </Link>
         </div>

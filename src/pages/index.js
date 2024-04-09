@@ -7,6 +7,8 @@ import { useMediaPredicate } from "react-media-hook"
 import { Link } from "gatsby"
 import clsx from "clsx"
 import { StaticImage } from "gatsby-plugin-image"
+import SplineImage from "../images/home/spline.svg"
+import SplineImageLight from "../images/home/spline-light.svg"
 import {
   wrapper,
   content,
@@ -20,6 +22,7 @@ import {
   projectInfo,
   period,
   projectDescription,
+  projectImageContainer,
   projectRole,
   wideProject,
   smallHeader,
@@ -35,10 +38,75 @@ import {
   imageSentio,
   imageCNWeb,
   imageCNMobile,
+  bottomAligned,
+  heroPart,
 } from "./styles/index.module.css"
 
 function IndexPage() {
   const preferredTheme = useMediaPredicate('(prefers-color-scheme: dark)') ? 'dark' : 'light'
+
+  function Project({ styleName, path, imageDark, imageLight, imageAlt, title, subtitle }) {
+    return (
+      <Link to={path}>
+        <div className={project}>
+          <div className={clsx(projectImageContainer, styleName)}>
+            { preferredTheme == 'dark' ?
+              <img
+                className={projectImage}
+                src={imageDark}
+                alt={imageAlt}
+                loading="lazy"
+              /> :
+              <img
+                className={projectImage}
+                src={imageLight}
+                alt={imageAlt}
+                loading="lazy"
+              />
+            }
+          </div>
+        <div className={projectInfo}>
+          <div className={link}>
+            <h3 className={mediumHeader}>{title}
+            </h3>
+            <span className={arrow}>
+              →
+            </span>
+          </div>
+            <p className={clsx(projectDescription, "deemphasized")}>{subtitle}</p>
+        </div>
+      </div>
+      </ Link>
+    );
+  }
+
+  // const range = (start, end, step = 1) => {
+  //   let output = [];
+
+  //   if (typeof end === 'undefined') {
+  //     end = start;
+  //     start = 0;
+  //   }
+
+  //   for (let i = start; i < end; i += step) {
+  //     output.push(i);
+  //   }
+
+  //   return output;
+  // };
+
+  function GridBackground({ cells }) {
+    return (
+      <div className={gridBackground}>
+        {Array(cells).fill().map((_, index) => (
+          <div 
+            className={gridCell}
+            key={index}
+            ></div>
+        ))}
+      </div>
+    )
+  }
 
   return (
     <Layout>
@@ -47,309 +115,52 @@ function IndexPage() {
           <div className={headerWrapper}>
             <Header details="living in Porto and currently designing mobile apps at Sentio" />
           </div>
-          <div className={heroImage}>
-            <StaticImage
-              className={cursorImage}
-              alt="Big image of mouse cursor"
-              loading="lazy"
-              src="../images/home/cursor.png"
-            />
-            <div className={gridBackground}>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
-              <div className={gridCell}></div>
+          <div className={heroPart}>
+            <h1 className={motto}>I design <span className="deemphasized">robust, aethetically pleasing</span> apps and websites</h1>
+            {/* <GridBackground cells={24*14} /> */}
+            {/* <div className={heroImage}>
+              {preferredTheme == 'dark' ? <SplineImage className={cursorImage} /> : <SplineImageLight className={cursorImage} />}
+              <GridBackground cells={576} />
             </div>
+            <h1 className={motto}>I design <span className="deemphasized">robust, aethetically pleasing</span> apps and websites</h1> */}
           </div>
-          <h1 className={motto}>Building better digital products<br /><span className="deemphasized">by bringing clarity to ideas</span></h1>
         </div>
         <div className={highlightsSection}>
           <h2 className={clsx(smallHeader, "allCaps deemphasized")}>Select works</h2>
           <div className={highlightsContent}>
-            <div className={project}>
-              <Link to="/sentio">
-                <div className={projectImage}>
-                  { preferredTheme == 'dark' ?
-                    <StaticImage
-                      className={imageSentio}
-                      alt="Image of a phone with multiple apps and a widget on it's screen"
-                      loading="lazy"
-                      src="../images/home/sentio-mobile-apps-dark.png"
-                      objectFit="contain"
-                    /> :
-                    <StaticImage
-                      className={imageSentio}
-                      alt="Image of a phone with multiple apps and a widget on it's screen"
-                      loading="lazy"
-                      src="../images/home/sentio-mobile-apps.png"
-                      objectFit="contain"
-                    /> 
-                  }
-                </div>
-              </Link>
-              <div className={projectInfo}>
-                <Link to="/sentio" className={link}>
-                  <h3 className={mediumHeader}>Sentio mobile apps
-                    <span className={arrow}>
-                      →
-                    </span>
-                  </h3>
-                </Link>
-                  <p className={clsx(projectDescription, "deemphasized")}>Assorted simple utility mobile apps</p>
-              </div>
-            </div>
-
-            <div className={clsx(project)}>
-              <Link to="/cuddlynest-web-platform">
-                <div className={projectImage}>
-                  <StaticImage
-                    className={imageCNWeb}
-                    alt="Image of a laptop with a types of trips and search button"
-                    loading="lazy"
-                    src="../images/home/cuddlynest-web-app.png"
-                    objectFit="contain"
-                  />
-                </div>
-              </Link>
-              <div className={projectInfo}>
-                <Link to="/cuddlynest-web-platform" className={link}>
-                  <h3 className={mediumHeader}>Cuddlynest web platform 
-                    <span className={arrow}>
-                      →
-                    </span>
-                  </h3>
-                </Link>
-                <p className={clsx(projectDescription, "deemphasized")}>Travel accommodation booking platform</p>
-              </div>
-            </div>
-
-
-            <div className={project}>
-              <Link to="/cuddlynest-mobile">
-                <div className={projectImage}>
-                  { preferredTheme == 'dark' ?
-                    <StaticImage
-                      className={imageCNMobile}
-                      alt="Image of an app icon and the top part of the phone with search prompt"
-                      loading="lazy"
-                      src="../images/home/cuddlynest-mobile-app-dark.png"
-                      objectFit="contain"
-                      style={{ position: 'absolute' }}
-                    /> :
-                    <StaticImage
-                      className={imageCNMobile}
-                      alt="Image of an app icon and the top part of the phone with search prompt"
-                      loading="lazy"
-                      src="../images/home/cuddlynest-mobile-app.png"
-                      objectFit="contain"
-                      style={{ position: 'absolute' }}
-                    />
-                  }
-                </div>
-              </Link>
-              <div className={projectInfo}>
-                <Link to="/cuddlynest-mobile" className={link}>
-                  <h3 className={mediumHeader}>Cuddlynest mobile app
-                    <span className={arrow}>
-                      →
-                    </span>
-                  </h3>
-                </Link>
-                  <p className={clsx(projectDescription, "deemphasized")}>Cross-platform mobile accommodation booking app</p>
-              </div>
-            </div>
+            <Project 
+              path="/easystats"
+              imageDark="../../easystats.png"
+              imageLight="../../easystats.png"
+              imageAlt="Image of a landing page of a website selling poker analytics tools"
+              title="Easy Stats website"
+              subtitle="Platform for selling poker converters and analytics tools"
+            />
+            <Project 
+              path="/sentio"
+              imageDark="../../sentio-mobile-apps-dark.png"
+              imageLight="../../sentio-mobile-apps.png"
+              imageAlt="Image of a phone with multiple apps and a widget on it's screen"
+              title="Sentio mobile apps"
+              subtitle="Various simple iOS and Android apps"
+            />
+            <Project 
+              path="/cuddlynest-web-platform"
+              imageDark="../../cuddlynest-web-app-dark.png"
+              imageLight="../../cuddlynest-web-app.png"
+              imageAlt="Image of a laptop with a types of trips and search button"
+              title="Cuddlynest web platform"
+              subtitle="Travel accommodation booking platform"
+            />
+            <Project 
+              styleName={bottomAligned}
+              path="/cuddlynest-mobile"
+              imageDark="../../cuddlynest-mobile-app-dark.png"
+              imageLight="../../cuddlynest-mobile-app.png"
+              imageAlt="Image of an app icon and the top part of the phone with search prompt"
+              title="Cuddlynest mobile app"
+              subtitle="Cross-platform mobile accommodation booking app"
+            />
 
           </div>
         </div>

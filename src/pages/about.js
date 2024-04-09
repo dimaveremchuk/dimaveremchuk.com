@@ -38,7 +38,7 @@ function AboutPage() {
       <div className={wrapper}>
         <div className={content}>
           <Header />
-          <h1 className={smallerHeader}>I work at the intersection of product and visual design, <span className="deemphasized">bringing sense and aesthetics to the digital world.</span></h1>
+          <h1 className={smallerHeader}>I'm a curious digital designer<span className="deemphasized">, who enjoys drawing rectangles, bending vectors, coding, and delving into business theories.</span></h1>
           <StaticImage
             alt="Dima Veremchuk profile image"
             src="../images/about/profile-image.png"
@@ -51,16 +51,16 @@ function AboutPage() {
               <h2 className={clsx(h2Header, "allCaps deemphasized")}>My path</h2>
                 <div className={pathText}>
                   <p>
-                    My path to design is unusual. I’ve spent first 10 years of my professional life as a finance and business consultant. Studying business theories and observing how various companies work I got a sense of what makes businesses tick and how they serve their customers.
+                  My journey into design has been unconventional. For the first ten years of my professional life, I worked as a finance and business consultant. Immersed in studying business theories and observing various companies, I gained insight into what drives businesses and how they cater to their customers.
                   </p>
                   <p>
-                    I’ve always been obsessed with digital world—from school when I started to use various computer programs to play with 3D, web-design and programming, to later in life spending hours picking the best designed software and apps.
+                  My fascination with the digital world began early, during my school years, when I first experimented with various computer programs, exploring 3D design, web design, and programming. Later in life, I would spend hours discerning the best-designed software and apps.
                   </p>
                   <p>
-                    Finally in 2018 I decided to try helping companies not with their numbers and consulting on how to thrive, but with what I obsessed about for so much time—digital products. I quit my job and with my wife and daughter went to South-East Asia for six months to recharge and try to put my foot into the door of the product design world. There I started to take freelance design projects and found my first full-time product design job.
+                  In 2018, I made a pivotal decision to shift my focus from advising companies on their financials to leveraging my long-held passion for digital products. I left my job and, accompanied by my wife and daughter, embarked on a six-month journey to South-East Asia to recharge and immerse myself in the world of product design. There, I began taking on freelance design projects and secured my first full-time product design role.
                   </p>
                   <p>
-                    With the product design being my core competence and passion, I tinker with iOS native development, front-end development, graphic design and 3D.
+                  With product design as my primary expertise and passion, I also dabble in front-end development, iOS native development, graphic design, and 3D.
                   </p>
                   <p className={clsx(emphasized, loveText)}>
                     I&nbsp;love&nbsp;what&nbsp;I&nbsp;do
@@ -112,7 +112,7 @@ function AboutPage() {
             <section className={website}>
               <h2 className={clsx(h2Header, "allCaps deemphasized")}>This website</h2>
               <div className={websiteDescription}>
-                <p>This website is built with HTML, CSS and React on top of&nbsp;
+                <p>This website is built with React on top of&nbsp;
                   <Link className={webLink} to="https://www.gatsbyjs.com/">
                     Gatsby
                   </Link>
@@ -133,7 +133,7 @@ function AboutPage() {
                   .
                 </p>
                 <p>
-                  Designed and built <span className="deemphasized badStuff">with a bunch of spaghetti code </span>by me (:
+                  Designed and built <span className="deemphasized badStuff">with a bunch of spaghetti code </span>by me 🫣
                 </p>
               </div>
             </section>
