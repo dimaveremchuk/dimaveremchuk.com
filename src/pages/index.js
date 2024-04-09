@@ -40,6 +40,7 @@ import {
   imageCNMobile,
   bottomAligned,
   heroPart,
+  eightyPercent,
 } from "./styles/index.module.css"
 
 function IndexPage() {
@@ -137,6 +138,7 @@ function IndexPage() {
               subtitle="Platform for selling poker converters and analytics tools"
             />
             <Project 
+              styleName={eightyPercent}
               path="/sentio"
               imageDark="../../sentio-mobile-apps-dark.png"
               imageLight="../../sentio-mobile-apps.png"
