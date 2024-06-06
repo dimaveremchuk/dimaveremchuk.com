@@ -41,6 +41,12 @@ import {
   bottomAligned,
   heroPart,
   eightyPercent,
+  heroImages,
+  heroImageContainer,
+  bottomAlignedHero,
+  darkShadow,
+  lightShadow,
+  mobileHidden,
 } from "./styles/index.module.css"
 
 function IndexPage() {
@@ -96,18 +102,18 @@ function IndexPage() {
   //   return output;
   // };
 
-  function GridBackground({ cells }) {
-    return (
-      <div className={gridBackground}>
-        {Array(cells).fill().map((_, index) => (
-          <div 
-            className={gridCell}
-            key={index}
-            ></div>
-        ))}
-      </div>
-    )
-  }
+  // function GridBackground({ cells }) {
+  //   return (
+  //     <div className={gridBackground}>
+  //       {Array(cells).fill().map((_, index) => (
+  //         <div 
+  //           className={gridCell}
+  //           key={index}
+  //           ></div>
+  //       ))}
+  //     </div>
+  //   )
+  // }
 
   return (
     <Layout>
@@ -116,8 +122,42 @@ function IndexPage() {
           <div className={headerWrapper}>
             <Header details="living in Porto and currently designing mobile apps at Sentio" />
           </div>
-          <div className={heroPart}>
-            <h1 className={motto}>I design <span className="deemphasized">robust, aethetically pleasing</span> apps and websites</h1>
+          {/* <div className={heroPart}> */}
+            <div className={heroImages}>
+              <div className={clsx(heroImageContainer, mobileHidden)}>
+                { preferredTheme == 'dark' ?
+                  <img
+                    className={clsx(heroImage, darkShadow)}
+                    src="../../web-design-dark.png"
+                    alt="Mockup of a website"
+                    loading="lazy"
+                  /> :
+                  <img
+                    className={clsx(heroImage, lightShadow)}
+                    src="../../web-design-light.png"
+                    alt="Mockup of a website"
+                    loading="lazy"
+                  />
+                }
+              </div>
+              <div className={clsx(heroImageContainer)}>
+                { preferredTheme == 'dark' ?
+                  <img
+                    className={clsx(heroImage, bottomAlignedHero)}
+                    src="../../mobile-design-dark.png"
+                    alt="Mockup of a website"
+                    loading="lazy"
+                  /> :
+                  <img
+                    className={clsx(heroImage, bottomAlignedHero)}
+                    src="../../mobile-design-light.png"
+                    alt="Mockup of a website"
+                    loading="lazy"
+                  />
+                }
+              </div>
+            </div>
+            <h1 className={motto}>I design <span className="deemphasized">robust, aesthetically pleasing</span> mobile and web apps</h1>
             {/* <GridBackground cells={24*14} /> */}
             {/* <div className={heroImage}>
               {preferredTheme == 'dark' ? <SplineImage className={cursorImage} /> : <SplineImageLight className={cursorImage} />}
@@ -125,7 +165,7 @@ function IndexPage() {
             </div>
             <h1 className={motto}>I design <span className="deemphasized">robust, aethetically pleasing</span> apps and websites</h1> */}
           </div>
-        </div>
+        {/* </div> */}
         <div className={highlightsSection}>
           <h2 className={clsx(smallHeader, "allCaps deemphasized")}>Select works</h2>
           <div className={highlightsContent}>

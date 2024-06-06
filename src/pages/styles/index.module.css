@@ -19,6 +19,20 @@
   justify-items: center;
 }
 
+.darkShadow {
+  filter: drop-shadow(0 8px 24px hsla(0, 0%, 0%, 0.25));
+}
+
+.lightShadow {
+  filter: drop-shadow(0 8px 24px hsla(0, 0%, 0%, 0.15));
+}
+
+.heroImages {
+  display: grid;
+  flex-grow: 1;
+  align-content: center;
+}
+
 .cursorImage {
   z-index: 1;
   width: 60%;
@@ -70,10 +84,10 @@
 .motto {
   align-self: end;
   color: hsl(var(--foreground-color));
-  max-width: 768px;
   font: var(--header-one);
   letter-spacing: var(--header-one-spacing);
   text-wrap: balance;
+  padding-bottom: 80px;
 }
 
 .highlightsSection {
@@ -90,6 +104,7 @@
   /* grid-template-columns: repeat(24, 1fr); */
   /* grid-template-rows: repeat(14, 1fr); */
   padding-bottom: 80px;
+  flex-direction: column;
 }
 
 .smallHeader {
@@ -105,6 +120,11 @@
 .project {
 }
 
+.bottomAlignedHero {
+  height: 80%;
+  align-self: end;
+}
+
 .projectImageContainer {
   /* height: clamp(312px, 65vh, 704px); */
   aspect-ratio: 1 / 1;
@@ -113,6 +133,13 @@
   display: flex;
   overflow: hidden;
   position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImageContainer {
+  background-color: hsl(var(--subtle-grey-color));
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -203,6 +230,14 @@
   height: 80%;
 }
 
+.mobileHidden {
+  display: none;
+}
+
+.heroImage {
+  max-width: 80%;
+}
+
 @media screen and (min-width: 600px) {
   .wrapper {
     /* margin-top: 40px; */
@@ -211,17 +246,26 @@
     margin-right: auto;
   }
 
+  .mobileHidden {
+    display: flex;
+  }
+
   .heroPart {
     /* grid-column: 1/3; */
   }
 
   .motto {
-    /* grid-row: 9/14;
-    grid-column: 1/17; */
+    padding-bottom: 64px;
+    /* margin-bottom: 0; */
   }
 
   .headerWrapper {
     grid-column: 1/3;
+  }
+
+  .heroImages {
+    grid-gap: 16px;
+    grid-template-columns: 1fr 1fr;
   }
 
   .gridBackground {
@@ -245,6 +289,10 @@
     align-items: center;
     grid-row: 1/3;
     grid-column: 2/2;
+  }
+
+  .bottomAlignedHero {
+    align-self: end;
   }
 
   .gridBackground {
@@ -290,6 +338,11 @@
   .footerContent {
     padding: 0;
   }
+
+  .heroImageContainer {
+    max-height: 56vh;
+  }
+
 }
 
 @media screen and (min-width: 1240px) {
@@ -307,21 +360,12 @@
     padding-bottom: 96px;
   }
 
-  .motto {
-    /* padding-bottom: 40px; */
-    margin-bottom: 0;
-  }
-
   .wideProject {
     grid-column: 1/3;
   }
 
   .aboveTheFold {
     /* row-gap: 0; */
-  }
-
-  .heroImage {
-    /* justify-items: center; */
   }
 
   .cursorImage {
