@@ -233,6 +233,7 @@ svg rect > .purple-cursor {
 
 .laptopAboveTheFold {
   max-height: 70vh;
+  max-width: 90%;
   justify-self: center;
   align-self: center;
 }
@@ -253,6 +254,10 @@ svg rect > .purple-cursor {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 16px;
+  }
+
+  .laptopAboveTheFold {
+    max-width: 60%;
   }
 
   .reelImage {

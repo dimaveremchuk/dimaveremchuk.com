@@ -49,12 +49,18 @@ function CuddlynestWeb() {
         <div className={headerWrapper}>
           <Header />
         </div>
-        <StaticImage
+        {/* <StaticImage
           alt="Image of the laptop with the search field of cuddlynest website"
           src="../images/cuddlynest-web/above-the-fold.png"
           loading="eager"
           className={clsx(aboveTheFoldImage, laptopAboveTheFold)}
           objectFit="contain"
+        /> */}
+        <img
+          className={clsx(aboveTheFoldImage, laptopAboveTheFold)}
+          loading="eager"
+          src="../../cuddlynest-web-app-dark.png"
+          alt="Image of the laptop with the search field of cuddlynest website"
         />
       </div>
       <div className={wrapper}>

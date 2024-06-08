@@ -30,6 +30,8 @@ import {
   loveText,
   heartIcon,
   webLink,
+  aboveTheFold,
+  profileImage,
 } from "./styles/about.module.css"
 
 function AboutPage() {
@@ -38,14 +40,23 @@ function AboutPage() {
       <div className={wrapper}>
         <div className={content}>
           <Header />
-          <h1 className={smallerHeader}>I'm a curious digital designer<span className="deemphasized">, who enjoys drawing rectangles, bending vectors, coding, and delving into business theories.</span></h1>
-          <StaticImage
-            alt="Dima Veremchuk profile image"
-            src="../images/about/profile-image.png"
-            className={photo}
-            objectFit="contain"
-            loading="eager"
-          />
+          <div className={aboveTheFold}>
+            <h1 className={smallerHeader}>I'm a curious digital designer<span className="deemphasized">, who enjoys drawing rectangles, bending vectors, coding, and delving into business theories.</span></h1>
+            <div className={photo}>
+              <img
+                className={profileImage}
+                src="../../profile-image.png"
+                alt="Profile image of Dima Veremchuk"
+              />
+            </div>
+            {/* <StaticImage
+              alt="Dima Veremchuk profile image"
+              src="../images/about/profile-image.png"
+              className={photo}
+              objectFit="contain"
+              loading="eager"
+            /> */}
+          </div>
           <div className={aboutContent}>
             <section className={path}>
               <h2 className={clsx(h2Header, "allCaps deemphasized")}>My path</h2>
@@ -57,7 +68,7 @@ function AboutPage() {
                   My fascination with the digital world began early, during my school years, when I first experimented with various computer programs, exploring 3D design, web design, and programming. Later in life, I would spend hours discerning the best-designed software and apps.
                   </p>
                   <p>
-                  In 2018, I made a pivotal decision to shift my focus from advising companies on their financials to leveraging my long-held passion for digital products. I left my job and, accompanied by my wife and daughter, embarked on a six-month journey to South-East Asia to recharge and immerse myself in the world of product design. There, I began taking on freelance design projects and secured my first full-time product design role.
+                  In 2018, I made a pivotal decision to shift my focus from advising companies on their financials to leveraging my long-held passion for digital products. I left my job and embarked on a six-month journey to South-East Asia to recharge and immerse myself in the world of product design. There, I began taking on freelance design projects and secured my first full-time product design role.
                   </p>
                   <p>
                   With product design as my primary expertise and passion, I also dabble in front-end development, iOS native development, graphic design, and 3D.

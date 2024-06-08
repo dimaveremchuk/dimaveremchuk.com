@@ -29,14 +29,22 @@
 
 .photo {
   /* height: 1240px; */
-  background-color: hsl(var(--subtle-grey-color));
+  background-color: hsl(209, 36%, 96%);
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.profileImage {
+  max-height: 85%;
+  max-width: 100%;
 }
 
 .smallerHeader {
   font: var(--header-three);
   letter-spacing: var(--header-three-spacing);
   margin: clamp(104px, 20vw, 200px) 0 clamp(52px, 10vw, 100px) 0;
-  max-width: 712px;
+  /* max-width: 712px; */
 }
 
 .h2Header {
@@ -64,6 +72,10 @@
   margin-top: 8px;
 }
 
+.aboveTheFold {
+  display: grid;
+}
+
 .loveText {
   display: grid;
   align-items: center;
@@ -77,8 +89,8 @@
 }
 
 .heartIcon:hover {
-  animation: heart-pump 0.5s ease infinite;
-  -webkit-animation: heart-pump 0.5s ease infinite;
+  animation: heart-pump 0.35s ease infinite;
+  -webkit-animation: heart-pump 0.35s ease infinite;
   cursor: none;
 }
 
@@ -96,17 +108,17 @@
     transform: scale(1);
   }
 
-  25% {
+  /* 25% {
     transform: scale(1);
-  }
+  } */
 
   50% {
-    transform: scale(1.2);
+    transform: scale(1.4);
   }
 
-  75% {
+  /* 75% {
     transform: scale(1);
-  }
+  } */
 
   100% {
     transform: scale(1);
@@ -119,7 +131,7 @@
   }
 
   5% {
-    transform: scale(1.15);
+    transform: scale(1.3);
   }
 
   20% {
@@ -131,7 +143,7 @@
   }
 
   35% {
-    transform: scale(1.15);
+    transform: scale(1.3);
   }
 
   50% {
@@ -139,7 +151,7 @@
   }
 
   55% {
-    transform: scale(1.15);
+    transform: scale(1.3);
   }
 
   70% {
@@ -168,9 +180,15 @@
     line-height: 30px;
   }
 
+  .aboveTheFold {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+    margin-top: clamp(40px, 5vw, 88px);
+  }
+
   .photo {
-    grid-column: 1/2;
-    grid-row: 1/3;
+    grid-column: 1/1;
+    grid-row: 1/1;
   }
 
   .pathText {
@@ -180,6 +198,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 16px;
+  }
+
+  .smallerHeader {
+    margin: 0;
+    align-self: center;
   }
 
   .workPlaces {
@@ -211,7 +234,7 @@
   }
 
   .photo {
-    grid-column: 4/7;
+    max-width: 90%;
   }
 
   .pathText {
