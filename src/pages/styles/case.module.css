@@ -101,6 +101,17 @@
   grid-template-rows: 1fr max-content;
 }
 
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video {
+  max-width: 80%;
+  max-height: 80%;
+}
+
 .phoneImage {
   height: clamp(360px, 64vh, 800px);
   align-self: center;

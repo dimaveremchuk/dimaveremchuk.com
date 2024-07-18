@@ -47,6 +47,7 @@ import {
   darkShadow,
   lightShadow,
   mobileHidden,
+  fullWidth,
 } from "./styles/index.module.css"
 
 function IndexPage() {
@@ -179,29 +180,38 @@ function IndexPage() {
             />
             <Project 
               imageSize={eightyPercent}
-              path="/sentio"
-              imageDark="../../sentio-mobile-apps-dark.png"
-              imageLight="../../sentio-mobile-apps.png"
-              imageAlt="Image of a phone with multiple apps and a widget on it's screen"
-              title="Sentio mobile apps"
-              subtitle="Various simple iOS and Android apps"
+              path="/phone-cleaner"
+              imageDark="../../phone-cleaner-app.png"
+              imageLight="../../phone-cleaner-app.png"
+              imageAlt="Image of a Home screen of a Phone Cleaner app"
+              title="Phone Cleaner"
+              subtitle="App for decluttering the phone"
             />
             <Project 
-              path="/cuddlynest-web-platform"
-              imageDark="../../cuddlynest-web-app-dark.png"
-              imageLight="../../cuddlynest-web-app.png"
+              // styleName={bottomAligned}
+              styleName={fullWidth}
+              path="/messages"
+              imageDark="../../messages-app.png"
+              imageLight="../../messages-app.png"
+              imageAlt="Image of iPhone and Android phone with the spash screen of Messages app"
+              title="Messages app"
+              subtitle="Global messaging with rented phone numbers"
+            />
+            <Project 
+              path="/cuddlynest-property-owner"
+              imageDark="../../cuddlynest-property-owner.png"
+              imageLight="../../cuddlynest-property-owner.png"
+              imageAlt="Property owner's dashboard page"
+              title="Cuddlynest"
+              subtitle="Property owner interface"
+            />
+            <Project 
+              path="/cuddlynest-omnisearch"
+              imageDark="../../cuddlynest-omnisearch.png"
+              imageLight="../../cuddlynest-omnisearch.png"
               imageAlt="Image of a laptop with a types of trips and search button"
-              title="Cuddlynest web platform"
-              subtitle="Travel accommodation booking platform"
-            />
-            <Project 
-              styleName={bottomAligned}
-              path="/cuddlynest-mobile"
-              imageDark="../../cuddlynest-mobile-app-dark.png"
-              imageLight="../../cuddlynest-mobile-app.png"
-              imageAlt="Image of an app icon and the top part of the phone with search prompt"
-              title="Cuddlynest mobile app"
-              subtitle="Cross-platform mobile accommodation booking app"
+              title="Cuddlynest"
+              subtitle="New omnisearch concept"
             />
 
           </div>

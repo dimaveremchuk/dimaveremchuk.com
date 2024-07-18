@@ -5,7 +5,7 @@
 }
 
 :root {
-  --header-one: 350 clamp(48px, 6vw, 68px)/calc(1em + 4px) 'Antarctica', sans-serif;
+  --header-one: 350 clamp(48px, 6vw, 84px)/calc(1em + 4px) 'Antarctica', sans-serif;
   --header-one-spacing: -0.04em;
   --header-three: 350 clamp(32px, 2.7vw, 40px)/calc(1em + 4px) 'Antarctica', sans-serif;
   --header-three-spacing: -0.01em;
@@ -71,7 +71,7 @@
     --background-color: 198, 4%, 8%;
     --grey-color: 209, 6%, 48%;
     --subtle-grey-color: 198, 4%, 12%;
-    --header-one: 300 clamp(48px, 6vw, 86px)/calc(1em + 4px) 'Antarctica', sans-serif;
+    --header-one: 300 clamp(48px, 6vw, 84px)/calc(1em + 4px) 'Antarctica', sans-serif;
     --header-three: 300 clamp(32px, 2.7vw, 40px)/calc(1em + 4px) 'Antarctica', sans-serif;
     --header-four: 300 clamp(24px, 2vw, 28px)/calc(1em + 6px) 'Antarctica', sans-serif;
     --body: 300 19px/30px 'Antarctica', sans-serif;

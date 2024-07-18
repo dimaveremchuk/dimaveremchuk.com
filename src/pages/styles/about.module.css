@@ -85,12 +85,17 @@
 
 .heartIcon {
   animation: heart-beat 2.3s ease-in infinite;
-  -webkit-animation: heart-beat 2.3s ease-in infinite;
+  -webkit-animation: heart-beat 2.3s cubic-bezier(.55, .085, .68, .53) infinite;
 }
 
+.heartIcon > path {
+  stroke: hsl(var(--foreground-color));
+}
+
+
 .heartIcon:hover {
-  animation: heart-pump 0.35s ease infinite;
-  -webkit-animation: heart-pump 0.35s ease infinite;
+  animation: heart-pump 0.4s ease infinite;
+  -webkit-animation: heart-pump 0.4s ease infinite;
   cursor: none;
 }
 
@@ -131,7 +136,7 @@
   }
 
   5% {
-    transform: scale(1.3);
+    transform: scale(1.25);
   }
 
   20% {
@@ -143,7 +148,7 @@
   }
 
   35% {
-    transform: scale(1.3);
+    transform: scale(1.25);
   }
 
   50% {
@@ -151,7 +156,7 @@
   }
 
   55% {
-    transform: scale(1.3);
+    transform: scale(1.25);
   }
 
   70% {
