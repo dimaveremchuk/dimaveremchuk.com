@@ -156,7 +156,7 @@ export default function PhoneCleaner() {
                         <div className={internalContainer}>
                             <div className={leftAligned}>
                                 <p className={highlight}>
-                                <span className="deemphasized">To provide feedback on the first implementation, I created a Figma page comparing screenshots of the implemented app with the original designs side-by-side. </span>This visual approach allowed me to leave contextual comments directly on the Figma file, streamlining the feedback process for developers.
+                                To provide feedback on the first implementation, I created a Figma page comparing screenshots of the implemented app with the original designs side-by-side. <span className="deemphasized">This visual approach allowed me to leave contextual comments directly on the Figma file, streamlining the feedback process for developers.</span>
                                 </p>
                             </div>
                             <div className={images}>
