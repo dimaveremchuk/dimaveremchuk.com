@@ -83,9 +83,18 @@ function AboutPage() {
               <h2 className={clsx(h2Header, "allCaps deemphasized")}>Experience</h2>
               <div className={workPlaces}>
                 <div className={workPlace}>
+                  <h3 className={role}>Product designer at Jitera</h3>
+                  <div className={clsx(period, "deemphasized")}>
+                    2024–now
+                  </div>
+                  <div className={clsx(description, "deemphasized")}>
+                    Designing interfaces and building design system for AI documentation platform.
+                  </div>
+                </div>
+                <div className={workPlace}>
                   <h3 className={role}>Product designer at Sentio</h3>
                   <div className={clsx(period, "deemphasized")}>
-                    2021–now
+                    2021–2024
                   </div>
                   <div className={clsx(description, "deemphasized")}>
                     Designing simple utility apps for mobile—iPhone, iPad, Android phones and tablets.
