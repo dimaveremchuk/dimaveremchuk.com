@@ -1,11 +1,11 @@
 .wrapper {
   /* margin-top: 40px; */
   max-width: 1440px;
-  margin: 32px auto 0 auto;
+  margin: 0 auto 0 auto;
 }
 
 .content {
-  padding: 0 16px;
+  padding: 32px 16px 0 16px;
 }
 
 .aboutContent {
@@ -263,17 +263,17 @@
 
   .description {
     grid-column: 1/6;
-    margin-top: 8px;
+    margin-top: 0;
   }
 }
 
 @media screen and (min-width: 600px) {
   .content {
-    padding: 0;
+    padding: 40px 0 0 0;
   }
 
   .wrapper {
-    margin-top: 40px;
+    /* margin-top: 40px; */
   }
 }
 
@@ -283,6 +283,6 @@
   }
   
   .content {
-    padding: 0;
+    /* padding: 0; */
   }
 }

@@ -83,12 +83,21 @@ function AboutPage() {
               <h2 className={clsx(h2Header, "allCaps deemphasized")}>Experience</h2>
               <div className={workPlaces}>
                 <div className={workPlace}>
-                  <h3 className={role}>Product designer at Jitera</h3>
+                  <h3 className={role}>Founding designer at Cuddlynest</h3>
                   <div className={clsx(period, "deemphasized")}>
-                    2024–now
+                    2025–now
                   </div>
                   <div className={clsx(description, "deemphasized")}>
-                    Designing interfaces and building design system for AI documentation platform.
+                    Building a design system from scratch for a travel booking platform. Designing core product features across web and mobile.
+                  </div>
+                </div>
+                <div className={workPlace}>
+                  <h3 className={role}>Product designer at Jitera</h3>
+                  <div className={clsx(period, "deemphasized")}>
+                    2024–2025
+                  </div>
+                  <div className={clsx(description, "deemphasized")}>
+                    Designed interfaces for an AI documentation platform. Introduced a design system from scratch. Worked with 3 product owners and 15+ engineers.
                   </div>
                 </div>
                 <div className={workPlace}>
@@ -97,16 +106,7 @@ function AboutPage() {
                     2021–2024
                   </div>
                   <div className={clsx(description, "deemphasized")}>
-                    Designing simple utility apps for mobile—iPhone, iPad, Android phones and tablets.
-                  </div>
-                </div>
-                <div className={workPlace}>
-                  <h3 className={role}>UX/UI designer at Whitespectre</h3>
-                  <div className={clsx(period, "deemphasized")}>
-                    2023–2023
-                  </div>
-                  <div className={clsx(description, "deemphasized")}>
-                    Designing interfaces for web apps.
+                    Designed 12 mobile apps from scratch — iOS and Android. The studio grew from $0 to $800K ARR.
                   </div>
                 </div>
                 <div className={workPlace}>
@@ -115,16 +115,16 @@ function AboutPage() {
                     2019–2021
                   </div>
                   <div className={clsx(description, "deemphasized")}>
-                    Designing and shaping the platform for the future of the accommodation booking.
+                    First designer at Cuddlynest. Designed the full product — search, booking flows, host and guest interfaces. Built the design system for web and mobile.
                   </div>
                 </div>
                 <div className={workPlace}>
                   <h3 className={role}>Digital designer freelancing</h3>
                   <div className={clsx(period, "deemphasized")}>
-                    2018–2020
+                    2018–2024
                   </div>
                   <div className={clsx(description, "deemphasized")}>
-                    Various web and mobile design projects
+                    Web and mobile design for various clients. Designed and built the EasyStats landing page — branding, animations, and front-end code.
                   </div>
                 </div>
               </div>
