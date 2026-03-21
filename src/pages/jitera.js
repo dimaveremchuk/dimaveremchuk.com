@@ -55,14 +55,14 @@ export default function Jitera() {
                 </div>
                 <ParticleLogo
                     className={aboveTheFoldImage}
-                    width={800}
-                    height={400}
-                    logoWidth={560}
+                    width="100%"
+                    height="100%"
+                    logoWidth={0.45}
                     showPanel={false}
                     backgroundColor="var(--subtle-grey-color)"
                     svgViewBox="0 0 180 34"
                     pathGroups={JITERA_PATH_GROUPS}
-                    particleCount={750}
+                    particleCount={1_000}
                     particleSize={1}
                     springStiffness={0.085}
                     springDamping={0.56}

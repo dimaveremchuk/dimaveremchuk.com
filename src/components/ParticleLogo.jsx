@@ -47,6 +47,13 @@ function sampleSvgPaths(pathDs, sampleCount, svgViewBox, canvasWidth, canvasHeig
 }
 
 // ---------------------------------------------------------------------------
+// Resolve logoWidth prop: fraction (< 2) → multiply by canvas width; else px
+// ---------------------------------------------------------------------------
+function resolveLogoWidth(logoWidthProp, canvasPixelWidth) {
+  return logoWidthProp < 2 ? canvasPixelWidth * logoWidthProp : logoWidthProp
+}
+
+// ---------------------------------------------------------------------------
 // Main hook: owns all animation state, runs the rAF loop
 // ---------------------------------------------------------------------------
 function useParticleEngine(canvasRef, config) {
@@ -112,7 +119,10 @@ function useParticleEngine(canvasRef, config) {
 
   const loop = useCallback(() => {
     const canvas = canvasRef.current
-    if (!canvas) return
+    if (!canvas) {
+      stateRef.current.animId = requestAnimationFrame(loop)
+      return
+    }
     const ctx = canvas.getContext("2d")
     const w = canvas.width
     const h = canvas.height
@@ -265,20 +275,25 @@ function useParticleEngine(canvasRef, config) {
     setTimeout(() => { s.mode = "float" }, 50)
   }, [])
 
-  // Bootstrap
+  // Bootstrap: start the rAF loop only (particle init happens in canvas-size effect)
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const isMobile = typeof window !== "undefined" && window.innerWidth < 768
-    const count = Math.min(cfg.current.particleCount, isMobile ? 60 : 1000)
-    initParticles(count, canvas.width, canvas.height)
     stateRef.current.animId = requestAnimationFrame(loop)
-
     return () => {
       if (stateRef.current.animId) cancelAnimationFrame(stateRef.current.animId)
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Re-initialize particles when canvas pixel dimensions change
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas || !canvas.width || !canvas.height) return
+    stateRef.current.pathPoints = null
+    stateRef.current.groupPoints = null
+    stateRef.current.mode = "float"
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768
+    const count = Math.min(cfg.current.particleCount, isMobile ? 60 : 1000)
+    initParticles(count, canvas.width, canvas.height)
+  }, [config._canvasW, config._canvasH, canvasRef, initParticles])
 
   // Rebuild particles when count changes
   const prevCount = useRef(config.particleCount)
@@ -295,11 +310,11 @@ function useParticleEngine(canvasRef, config) {
     initParticles(count, canvas.width, canvas.height)
   }, [config.particleCount, canvasRef, initParticles])
 
-  // Invalidate path cache when density, paths, or logo size change
+  // Invalidate path cache when density, paths, logo size, or canvas size change
   useEffect(() => {
     stateRef.current.pathPoints = null
     stateRef.current.groupPoints = null
-  }, [config.pathDensity, config.svgPath, config.pathGroups, config.logoWidth])
+  }, [config.pathDensity, config.svgPath, config.pathGroups, config.logoWidth, config._canvasW, config._canvasH])
 
   return { onEnter, onLeave }
 }
@@ -428,6 +443,20 @@ export default function ParticleLogo({
   backgroundColor = "var(--subtle-grey-color)",
 }) {
   const canvasRef = useRef(null)
+  const outerDivRef = useRef(null)
+  const [canvasSize, setCanvasSize] = useState({ w: 0, h: 0 })
+
+  // Measure the outer div and keep canvas dimensions in sync
+  useEffect(() => {
+    const el = outerDivRef.current
+    if (!el) return
+    const ro = new ResizeObserver(entries => {
+      const { width: w, height: h } = entries[0].contentRect
+      setCanvasSize({ w: Math.round(w), h: Math.round(h) })
+    })
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
 
   const [params, setParams] = useState({
     svgPath,
@@ -449,22 +478,69 @@ export default function ParticleLogo({
     setParams(prev => ({ ...prev, [key]: val }))
   }, [])
 
-  const { onEnter, onLeave } = useParticleEngine(canvasRef, params)
+  const resolvedLogoWidth = resolveLogoWidth(logoWidth, canvasSize.w)
+  const engineConfig = {
+    ...params,
+    logoWidth: resolvedLogoWidth,
+    _canvasW: canvasSize.w,
+    _canvasH: canvasSize.h,
+  }
+
+  const { onEnter, onLeave } = useParticleEngine(canvasRef, engineConfig)
 
   const isClient = typeof window !== "undefined"
 
+  // Compute logo bounding rectangle (same math as sampleSvgPaths)
+  const logoRect = canvasSize.w > 0 ? (() => {
+    const [, , vw, vh] = svgViewBox.split(" ").map(Number)
+    const scale = resolvedLogoWidth / vw
+    const logoH = vh * scale
+    return {
+      x: (canvasSize.w - resolvedLogoWidth) / 2,
+      y: (canvasSize.h - logoH) / 2,
+      w: resolvedLogoWidth,
+      h: logoH,
+    }
+  })() : null
+
+  const isOverLogoRef = useRef(false)
+
+  const handleMouseMove = useCallback((e) => {
+    if (!logoRect) return
+    const rect = outerDivRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const isOver = x >= logoRect.x && x <= logoRect.x + logoRect.w
+                && y >= logoRect.y && y <= logoRect.y + logoRect.h
+    if (isOver && !isOverLogoRef.current) {
+      onEnter()
+      isOverLogoRef.current = true
+    } else if (!isOver && isOverLogoRef.current) {
+      onLeave()
+      isOverLogoRef.current = false
+    }
+  }, [logoRect, onEnter, onLeave])
+
+  const handleMouseLeave = useCallback(() => {
+    if (isOverLogoRef.current) {
+      onLeave()
+      isOverLogoRef.current = false
+    }
+  }, [onLeave])
+
   return (
     <div
+      ref={outerDivRef}
       style={{ position: "relative", width, height, background: backgroundColor, borderRadius: 8, overflow: "hidden" }}
-      onMouseEnter={isClient ? onEnter : undefined}
-      onMouseLeave={isClient ? onLeave : undefined}
+      onMouseMove={isClient ? handleMouseMove : undefined}
+      onMouseLeave={isClient ? handleMouseLeave : undefined}
     >
-      {isClient && (
+      {isClient && canvasSize.w > 0 && (
         <canvas
           ref={canvasRef}
-          width={width}
-          height={height}
-          style={{ display: "block" }}
+          width={canvasSize.w}
+          height={canvasSize.h}
+          style={{ display: "block", width: "100%", height: "100%" }}
         />
       )}
       {showPanel && isClient && (

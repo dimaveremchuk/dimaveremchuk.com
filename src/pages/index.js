@@ -192,9 +192,9 @@ function IndexPage() {
               subtitle="Enterprise SaaS design — AI-powered docs and test automation"
               customImage={
                 <ParticleLogo
-                  width={400}
-                  height={400}
-                  logoWidth={340}
+                  width="100%"
+                  height="100%"
+                  logoWidth={0.85}
                   showPanel={false}
                   backgroundColor="var(--subtle-grey-color)"
                   svgViewBox="0 0 180 34"
