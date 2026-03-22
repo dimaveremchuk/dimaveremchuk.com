@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import Layout from "../components/layout/layout"
 import Header from "../components/sections/header"
 import Footer from "../components/sections/footer"
 import ParticleLogo from "../components/ParticleLogo"
+import { useMediaPredicate } from "react-media-hook"
 import clsx from "clsx"
 import {
     aboveTheFold,
@@ -28,6 +29,8 @@ import {
     images,
     imageWide,
     image,
+    reloadButton,
+    prototypeContainer,
 } from "./styles/case.module.css"
 
 // Path data extracted from src/svg/jitera-logo.svg
@@ -40,13 +43,24 @@ const E_D = "M104.488 32.124V1.12402H123.488V6.96704L110.779 6.94534L110.698 13.
 const R_D = "M149.488 32.1186L143.155 18.4198C146.778 17.3076 149.398 13.8409 149.403 9.76106C149.409 5.68125 146.619 1.12402 140.468 1.12402H128.488V32.124H134.526L134.73 19.0491H137.095L142.968 32.124H149.488V32.1186ZM139.776 7.07012C142.192 7.07012 143.201 8.42101 143.201 10.0703C143.201 11.47 142.458 13.0705 139.601 13.0705H134.532L134.549 7.07012H139.776Z"
 const A_D = "M170.428 1.12402H162.593L153.488 32.124H159.051L161.752 22.843H161.758L162.086 21.7202H170.935L171.263 22.843H171.269L173.992 32.124H179.488L170.428 1.12402ZM163.774 15.9487L166.452 7.01484L169.242 15.9487H163.774Z"
 
-const JITERA_PATH_GROUPS = [
-    { paths: [LEFT_CHEVRON_D],                         color: "rgba(255, 100, 80, 0.8)",   weight: 1 },
-    { paths: [RIGHT_CHEVRON_D],                        color: "rgba(80, 160, 255, 0.8)",   weight: 1 },
-    { paths: [J_D, I_D, T_D, E_D, R_D, A_D],          color: "rgba(220, 220, 220, 0.75)", weight: 6 },
-]
+const ReloadIcon = () => (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 12.75C3 17.7206 7.02944 21.75 12 21.75C16.9706 21.75 21 17.7206 21 12.75C21 7.77944 16.9706 3.75 12 3.75C8.86954 3.75 6.11238 5.34826 4.5 7.77331M4.5 7.77331H10M4.5 7.77331V2.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+)
 
 export default function Jitera() {
+    const [protoKeys, setProtoKeys] = useState([0, 0, 0])
+    const reload = (i) => setProtoKeys(k => k.map((v, idx) => idx === i ? v + 1 : v))
+
+    const preferredTheme = useMediaPredicate('(prefers-color-scheme: dark)') ? 'dark' : 'light'
+    const subtleGrey = preferredTheme === 'dark' ? 'hsl(209, 6%, 48%)' : 'hsl(209, 8%, 71%)'
+    const JITERA_PATH_GROUPS = [
+        { paths: [RIGHT_CHEVRON_D],                       color: "hsla(236, 100%, 51%, 1.0)", weight: 2 },
+        { paths: [LEFT_CHEVRON_D],                        color: "hsla(194, 80%, 49%, 1.0)",  weight: 2 },
+        { paths: [J_D, I_D, T_D, E_D, R_D, A_D],         color: subtleGrey,                  weight: 6 },
+    ]
+
     return (
         <Layout>
             <div className={aboveTheFold}>
@@ -64,9 +78,12 @@ export default function Jitera() {
                     pathGroups={JITERA_PATH_GROUPS}
                     particleCount={1_000}
                     particleSize={1}
-                    springStiffness={0.085}
+                    speed={2.4}
+                    springStiffness={0.04}
                     springDamping={0.56}
                     pathDensity={730}
+                    autoAssemble={true}
+                    variableOpacity={true}
                 />
             </div>
             <div className={wrapper}>
@@ -102,13 +119,11 @@ export default function Jitera() {
                                 </h2>
                                 <div className={paragraph}>
                                     <p>No design system existed when I arrived. I built one from scratch.</p>
-                                    <p>Dark theme first. I extracted tokens for color, typography, spacing, and built out components — buttons, forms, dropdowns, tables, and everything in between. The system lived in Figma, but I also implemented it as a React package embedded in the product's front-end. I submitted PRs, they were reviewed by engineers and merged into production. Later I added a light theme as the product matured.</p>
+                                    <p>Dark theme first. I extracted tokens for color, typography, spacing, and built out components—buttons, forms, dropdowns, tables, and everything in between. The system lived in Figma, but I didn't stop there. Engineers implemented most components as a React package embedded in the product's front-end. I added some components from scratch, and reviewed and tweaked nearly everything else at the code level to make sure the implementation matched the design. Not just redlines and comments, but actual PRs.</p>
+                                    <p>
+                                        When the team needed to move faster during a critical PMF push, we decided to replace the proprietary system with shadcn. I made the call alongside engineering. We weren't going to maintain a custom system when speed mattered more. I then augmented shadcn with product-specific components that weren't covered out of the box.
+                                    </p>
                                 </div>
-                            </div>
-                            <div className={rightAligned}>
-                                <p className={highlight}>
-                                    When the team needed to move faster during a critical PMF push, <span className="deemphasized">we decided to replace the proprietary system with shadcn. I made the call alongside engineering. We weren't going to maintain a custom system when speed mattered more. I then augmented shadcn with product-specific components that weren't covered out of the box.</span>
-                                </p>
                             </div>
                         </div>
                     </section>
@@ -129,17 +144,29 @@ export default function Jitera() {
                                     AI test generation. <span className="deemphasized">The problem: how do you show an AI agent generating tests in real time without the interface feeling broken? Users needed to understand the process was working, not frozen. I designed the interaction around a prompt-to-output flow with streaming feedback — so users could watch tests appear as the agent worked, step by step.</span>
                                 </p>
                             </div>
-                            <div className={images}>
-                                <div
-                                    className={clsx(imageWide, image)}
-                                    style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
-                                >
-                                    <iframe
-                                        src="https://ai-chat-prototype.vercel.app/"
-                                        title="AI test generation prototype"
-                                        style={{ width: "100%", height: "100%", border: "none", display: "block" }}
-                                        loading="lazy"
-                                    />
+                            <div className={prototypeContainer}>
+                                <div className={images}>
+                                    <div
+                                        className={clsx(imageWide, image)}
+                                        style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
+                                    >
+                                        <iframe
+                                            key={protoKeys[0]}
+                                            src="https://ai-chat-prototype.vercel.app/"
+                                            title="AI test generation prototype"
+                                            style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                </div>
+                                <button className={reloadButton} onClick={() => reload(0)} aria-label="Reload prototype">
+                                    <ReloadIcon />
+                                    Reload prototype
+                                </button>
+                                <div className={paragraph}>
+                                    <div>
+                                        Try it: <span className="deemphasized">Click the sparkles icon in the top right corner to open the agent panel. Type anything into the prompt — the content doesn't matter. The prototype shows how the interface keeps users informed throughout generation: what's being worked on, what's already done, and that something is always happening.</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -149,17 +176,29 @@ export default function Jitera() {
                                     Manual test management. <span className="deemphasized">Complex test suites need power-user interactions: reordering steps, creating new cases quickly, navigating with keyboard shortcuts. None of this is possible to spec in static screens. The prototype shows drag-to-reorder, keyboard shortcuts, and the transitions between states. It was built specifically so developers could feel the intended rhythm before implementing it.</span>
                                 </p>
                             </div>
-                            <div className={images}>
-                                <div
-                                    className={clsx(imageWide, image)}
-                                    style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
-                                >
-                                    <iframe
-                                        src="https://ai-chat-prototype.vercel.app/"
-                                        title="Manual test management prototype"
-                                        style={{ width: "100%", height: "100%", border: "none", display: "block" }}
-                                        loading="lazy"
-                                    />
+                            <div className={prototypeContainer}>
+                                <div className={images}>
+                                    <div
+                                        className={clsx(imageWide, image)}
+                                        style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
+                                    >
+                                        <iframe
+                                            key={protoKeys[1]}
+                                            src="https://tests-prototype.vercel.app/"
+                                            title="Manual test management prototype"
+                                            style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                </div>
+                                <button className={reloadButton} onClick={() => reload(1)} aria-label="Reload prototype">
+                                    <ReloadIcon />
+                                    Reload prototype
+                                </button>
+                                <div className={paragraph}>
+                                    <div>
+                                        Try it: <span className="deemphasized">Almost everything has a keyboard shortcut — hover over any button to see it. When creating steps, you can save and move to the next one without touching the mouse. Once you have multiple steps in a test case, grab the drag handle on the left to reorder them. The goal was to make building a large test suite feel fast, not tedious.</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -169,18 +208,25 @@ export default function Jitera() {
                                     Database generation. <span className="deemphasized">Background processes are easy to get wrong. Show nothing and users assume something broke. Show too much and it becomes noise. This prototype focuses on progress feedback and micro-animations — each completed step gets a small moment of acknowledgment, then the UI moves on.</span>
                                 </p>
                             </div>
-                            <div className={images}>
-                                <div
-                                    className={clsx(imageWide, image)}
-                                    style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
-                                >
-                                    <iframe
-                                        src="https://generation-progress-prototype.vercel.app/"
-                                        title="Database generation prototype"
-                                        style={{ width: "100%", height: "100%", border: "none", display: "block" }}
-                                        loading="lazy"
-                                    />
+                            <div className={prototypeContainer}>
+                                <div className={images}>
+                                    <div
+                                        className={clsx(imageWide, image)}
+                                        style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
+                                    >
+                                        <iframe
+                                            key={protoKeys[2]}
+                                            src="https://generation-progress-prototype.vercel.app/"
+                                            title="Database generation prototype"
+                                            style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                                            loading="lazy"
+                                        />
+                                    </div>
                                 </div>
+                                <button className={reloadButton} onClick={() => reload(2)} aria-label="Reload prototype">
+                                    <ReloadIcon />
+                                    Reload prototype
+                                </button>
                             </div>
                         </div>
                     </section>
@@ -188,10 +234,12 @@ export default function Jitera() {
                         <div className={internalContainer}>
                             <div className={headerWithParagraph}>
                                 <h2 className={headerTwo}>
-                                    More context
+                                    Beyond the prototypes
                                 </h2>
                                 <div className={paragraph}>
-                                    <p>The product was wider than what's shown here. I designed complex settings interfaces for multiple user roles — super admins, admins, regular users — plus documentation management and generation flows.</p>
+                                    <p>The product was more complex than what's shown here. I designed settings interfaces for multiple user roles — super admins, admins, and regular users — each with different permissions and views of the same underlying data. Getting that hierarchy right without making the interface feel different for each role was one of the more interesting challenges.</p>
+                                    <p>Documentation management was another core area. The main challenge was making editing feel lightweight in a product that was otherwise dense and technical. I also designed import and export flows covering multiple file formats — the kind of unglamorous but frequently used feature that's easy to get wrong.</p>
+                                    <p>Agent and generation flows appeared throughout the product, not just in test cases. Similar to the prototype above — designing for AI processes that take time, keeping users informed without making them anxious about whether something is working.</p>
                                 </div>
                             </div>
                         </div>

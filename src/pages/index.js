@@ -60,14 +60,15 @@ const E_D = "M104.488 32.124V1.12402H123.488V6.96704L110.779 6.94534L110.698 13.
 const R_D = "M149.488 32.1186L143.155 18.4198C146.778 17.3076 149.398 13.8409 149.403 9.76106C149.409 5.68125 146.619 1.12402 140.468 1.12402H128.488V32.124H134.526L134.73 19.0491H137.095L142.968 32.124H149.488V32.1186ZM139.776 7.07012C142.192 7.07012 143.201 8.42101 143.201 10.0703C143.201 11.47 142.458 13.0705 139.601 13.0705H134.532L134.549 7.07012H139.776Z"
 const A_D = "M170.428 1.12402H162.593L153.488 32.124H159.051L161.752 22.843H161.758L162.086 21.7202H170.935L171.263 22.843H171.269L173.992 32.124H179.488L170.428 1.12402ZM163.774 15.9487L166.452 7.01484L169.242 15.9487H163.774Z"
 
-const JITERA_PATH_GROUPS = [
-  { paths: [LEFT_CHEVRON_D],                       color: "rgba(255, 100, 80, 0.8)",   weight: 1 },
-  { paths: [RIGHT_CHEVRON_D],                      color: "rgba(80, 160, 255, 0.8)",   weight: 1 },
-  { paths: [J_D, I_D, T_D, E_D, R_D, A_D],        color: "rgba(220, 220, 220, 0.75)", weight: 6 },
-]
-
 function IndexPage() {
   const preferredTheme = useMediaPredicate('(prefers-color-scheme: dark)') ? 'dark' : 'light'
+
+  const subtleGrey = preferredTheme === 'dark' ? 'hsl(209, 6%, 48%)' : 'hsl(209, 8%, 71%)'
+  const JITERA_PATH_GROUPS = [
+    { paths: [RIGHT_CHEVRON_D],                       color: "hsla(236, 100%, 51%, 1.0)", weight: 2 },
+    { paths: [LEFT_CHEVRON_D],                        color: "hsla(194, 80%, 49%, 1.0)",  weight: 2 },
+    { paths: [J_D, I_D, T_D, E_D, R_D, A_D],         color: subtleGrey,                  weight: 6 },
+  ]
 
   function Project({ styleName, imageSize, path, imageDark, imageLight, imageAlt, title, subtitle, customImage }) {
     return (
@@ -199,11 +200,19 @@ function IndexPage() {
                   backgroundColor="var(--subtle-grey-color)"
                   svgViewBox="0 0 180 34"
                   pathGroups={JITERA_PATH_GROUPS}
-                  particleCount={750}
+                  particleCount={1000}
                   particleSize={1}
-                  springStiffness={0.085}
-                  springDamping={0.56}
+                  speed={4.1}
+                  springStiffness={0.06}
+                  springDamping={0.57}
+                  scatter={0.8}
+                  gravity={0.002}
                   pathDensity={730}
+                  movementBehavior="drift"
+                  driftRange={90}
+                  driftDamping={0.46}
+                  driftOpacitySpeed={0.03}
+                  variableOpacity={true}
                 />
               }
             />

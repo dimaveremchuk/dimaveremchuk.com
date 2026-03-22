@@ -70,7 +70,7 @@ function useParticleEngine(canvasRef, config) {
   useEffect(() => { cfg.current = config }, [config])
 
   const initParticles = useCallback((count, w, h) => {
-    const { pathGroups } = cfg.current
+    const { pathGroups, logoWidth, svgViewBox } = cfg.current
     const numGroups = pathGroups?.length || 1
     const arr = []
     const boundaries = []
@@ -97,18 +97,30 @@ function useParticleEngine(canvasRef, config) {
       boundaries.push(cumulative)
     }
 
+    // Logo bounding rect for spawn positions
+    const [, , vw, vh] = svgViewBox.split(" ").map(Number)
+    const lh = logoWidth * (vh / vw)
+    const lx = (w - logoWidth) / 2
+    const ly = (h - lh) / 2
+
     for (let i = 0; i < count; i++) {
       let group = 0
       while (group < numGroups - 1 && i >= boundaries[group]) group++
       const angle = Math.random() * Math.PI * 2
       const spd = cfg.current.speed * (0.5 + Math.random() * 0.5)
+      const px = lx + Math.random() * logoWidth
+      const py = ly + Math.random() * lh
       arr.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
+        x: px,
+        y: py,
+        homeX: px,
+        homeY: py,
         vx: Math.cos(angle) * spd,
         vy: Math.sin(angle) * spd,
         tx: 0, ty: 0,
         savedVx: 0, savedVy: 0,
+        opacity: Math.random(),
+        opacityDir: Math.random() < 0.5 ? 1 : -1,
         group,
       })
     }
@@ -129,6 +141,7 @@ function useParticleEngine(canvasRef, config) {
     const {
       particleCount, particleSize, speed, color, pathGroups,
       springStiffness, springDamping, scatter, gravity, logoWidth, svgViewBox,
+      movementBehavior, driftRange, driftDamping, driftOpacitySpeed, variableOpacity,
     } = cfg.current
     const { particles, mode, groupBoundaries } = stateRef.current
 
@@ -158,6 +171,34 @@ function useParticleEngine(canvasRef, config) {
             p.vy = p.vy * springDamping + ay
             p.x += p.vx
             p.y += p.vy
+            if (variableOpacity) {
+              p.opacity += p.opacityDir * driftOpacitySpeed
+              if (p.opacity >= 1) { p.opacity = 1; p.opacityDir = -1 }
+              else if (p.opacity <= 0) { p.opacity = 0; p.opacityDir = 1 }
+            } else if (movementBehavior === "drift") {
+              p.opacity = Math.min(1, p.opacity + driftOpacitySpeed * 2)
+            }
+          } else if (movementBehavior === "drift") {
+            const spd = speed
+            p.vx += (Math.random() - 0.5) * 0.04 * spd
+            p.vy += (Math.random() - 0.5) * 0.04 * spd
+            const dx = p.homeX - p.x
+            const dy = p.homeY - p.y
+            const dist = Math.sqrt(dx * dx + dy * dy)
+            p.vx += dx * 0.006
+            p.vy += dy * 0.006
+            if (dist > driftRange) {
+              const excess = dist - driftRange
+              p.vx += (dx / dist) * excess * 0.15
+              p.vy += (dy / dist) * excess * 0.15
+            }
+            p.vx *= driftDamping
+            p.vy *= driftDamping
+            p.x += p.vx
+            p.y += p.vy
+            p.opacity += p.opacityDir * driftOpacitySpeed
+            if (p.opacity >= 1) { p.opacity = 1; p.opacityDir = -1 }
+            else if (p.opacity <= 0) { p.opacity = 0; p.opacityDir = 1 }
           } else {
             const spd = speed
             p.vx += (Math.random() - 0.5) * 0.04 * spd
@@ -171,8 +212,10 @@ function useParticleEngine(canvasRef, config) {
             p.y += p.vy
           }
 
+          if (movementBehavior === "drift" || variableOpacity) ctx.globalAlpha = p.opacity
           ctx.fillRect(p.x - particleSize, p.y - particleSize, particleSize * 2, particleSize * 2)
         }
+        if (movementBehavior === "drift" || variableOpacity) ctx.globalAlpha = 1
 
         gStart = gEnd
       }
@@ -190,6 +233,30 @@ function useParticleEngine(canvasRef, config) {
           p.vy = p.vy * springDamping + ay
           p.x += p.vx
           p.y += p.vy
+          if (movementBehavior === "drift") {
+            p.opacity = Math.min(1, p.opacity + driftOpacitySpeed * 2)
+          }
+        } else if (movementBehavior === "drift") {
+          const spd = speed
+          p.vx += (Math.random() - 0.5) * 0.04 * spd
+          p.vy += (Math.random() - 0.5) * 0.04 * spd
+          const dx = p.homeX - p.x
+          const dy = p.homeY - p.y
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          p.vx += dx * 0.006
+          p.vy += dy * 0.006
+          if (dist > driftRange) {
+            const excess = dist - driftRange
+            p.vx += (dx / dist) * excess * 0.15
+            p.vy += (dy / dist) * excess * 0.15
+          }
+          p.vx *= driftDamping
+          p.vy *= driftDamping
+          p.x += p.vx
+          p.y += p.vy
+          p.opacity += p.opacityDir * driftOpacitySpeed
+          if (p.opacity >= 1) { p.opacity = 1; p.opacityDir = -1 }
+          else if (p.opacity <= 0) { p.opacity = 0; p.opacityDir = 1 }
         } else {
           const spd = speed
           p.vx += (Math.random() - 0.5) * 0.04 * spd
@@ -206,10 +273,12 @@ function useParticleEngine(canvasRef, config) {
           if (p.y > h - particleSize) { p.y = h - particleSize; p.vy = -Math.abs(p.vy) }
         }
 
+        if (movementBehavior === "drift" || variableOpacity) ctx.globalAlpha = p.opacity
         ctx.beginPath()
         ctx.arc(p.x, p.y, particleSize, 0, Math.PI * 2)
         ctx.fill()
       }
+      if (movementBehavior === "drift" || variableOpacity) ctx.globalAlpha = 1
     }
 
     stateRef.current.animId = requestAnimationFrame(loop)
@@ -266,11 +335,15 @@ function useParticleEngine(canvasRef, config) {
   const onLeave = useCallback(() => {
     const s = stateRef.current
     s.mode = "dissolve"
-    const { scatter } = cfg.current
+    const { scatter, movementBehavior } = cfg.current
     for (let i = 0; i < s.particles.length; i++) {
       const p = s.particles[i]
       p.vx = p.savedVx + (Math.random() - 0.5) * scatter
       p.vy = p.savedVy + (Math.random() - 0.5) * scatter
+      if (movementBehavior === "drift") {
+        p.opacity = Math.random()
+        p.opacityDir = Math.random() < 0.5 ? 1 : -1
+      }
     }
     setTimeout(() => { s.mode = "float" }, 50)
   }, [])
@@ -316,6 +389,24 @@ function useParticleEngine(canvasRef, config) {
     stateRef.current.groupPoints = null
   }, [config.pathDensity, config.svgPath, config.pathGroups, config.logoWidth, config._canvasW, config._canvasH])
 
+  // Re-initialize particles when movementBehavior changes (new home positions)
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas || !canvas.width || !canvas.height) return
+    stateRef.current.pathPoints = null
+    stateRef.current.groupPoints = null
+    stateRef.current.mode = "float"
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768
+    initParticles(Math.min(cfg.current.particleCount, isMobile ? 60 : 1000), canvas.width, canvas.height)
+  }, [config.movementBehavior, canvasRef, initParticles])
+
+  // Auto-assemble: when canvas is ready and autoAssemble=true, schedule assembly
+  useEffect(() => {
+    if (!config.autoAssemble || !config._canvasW || !config._canvasH) return
+    const timer = setTimeout(() => { onEnter() }, 400)
+    return () => clearTimeout(timer)
+  }, [config._canvasW, config._canvasH, config.autoAssemble, onEnter])
+
   return { onEnter, onLeave }
 }
 
@@ -325,6 +416,7 @@ function useParticleEngine(canvasRef, config) {
 function ControlPanel({ params, onChange }) {
   const [, forceRender] = useState(0)
   const hasGroups = params.pathGroups?.length > 0
+  const isDrift = params.movementBehavior === "drift"
 
   const slider = (label, key, min, max, step) => {
     const val = params[key]
@@ -349,6 +441,20 @@ function ControlPanel({ params, onChange }) {
   return (
     <div style={styles.panel}>
       <div style={styles.panelTitle}>Particle Config</div>
+
+      <div style={styles.row}>
+        <span style={styles.label}>Mode</span>
+        <div style={styles.segmented}>
+          {["free", "drift"].map(m => (
+            <button
+              key={m}
+              style={{ ...styles.segBtn, ...(params.movementBehavior === m ? styles.segBtnActive : {}) }}
+              onClick={() => { onChange("movementBehavior", m); forceRender(n => n + 1) }}
+            >{m}</button>
+          ))}
+        </div>
+      </div>
+
       {slider("Count",       "particleCount",   10,   1000, 1)}
       {slider("Size",        "particleSize",    0.5,  10,  0.5)}
       {slider("Speed",       "speed",           0.1,  5,   0.1)}
@@ -357,6 +463,25 @@ function ControlPanel({ params, onChange }) {
       {slider("Scatter",     "scatter",         0,    5,   0.1)}
       {slider("Gravity",     "gravity",         0,    0.02, 0.001)}
       {slider("Path density","pathDensity",     20,   1000, 10)}
+
+      {isDrift && (
+        <>
+          <div style={styles.divider} />
+          {slider("Drift range",   "driftRange",        5,    200,  5)}
+          {slider("Drift damping", "driftDamping",      0.80, 0.99, 0.01)}
+          {slider("Opacity speed", "driftOpacitySpeed", 0.001,0.05, 0.001)}
+        </>
+      )}
+
+      <label style={styles.row}>
+        <span style={styles.label}>Var. opacity</span>
+        <input
+          type="checkbox"
+          checked={params.variableOpacity}
+          onChange={e => { onChange("variableOpacity", e.target.checked); forceRender(n => n + 1) }}
+          style={{ accentColor: "#7c7cff", cursor: "pointer" }}
+        />
+      </label>
       {!hasGroups && (
         <label style={styles.row}>
           <span style={styles.label}>Color</span>
@@ -418,6 +543,30 @@ const styles = {
     textAlign: "right",
     color: "#eee",
   },
+  segmented: {
+    display: "flex",
+    flex: 1,
+    gap: 3,
+  },
+  segBtn: {
+    flex: 1,
+    padding: "2px 0",
+    border: "1px solid rgba(255,255,255,0.2)",
+    borderRadius: 4,
+    background: "transparent",
+    color: "#aaa",
+    cursor: "pointer",
+    fontSize: 10,
+  },
+  segBtnActive: {
+    background: "rgba(124,124,255,0.35)",
+    color: "#fff",
+    borderColor: "#7c7cff",
+  },
+  divider: {
+    borderTop: "1px solid rgba(255,255,255,0.08)",
+    margin: "6px 0",
+  },
 }
 
 // ---------------------------------------------------------------------------
@@ -441,6 +590,12 @@ export default function ParticleLogo({
   gravity = 0.002,
   showPanel = true,
   backgroundColor = "var(--subtle-grey-color)",
+  autoAssemble = false,
+  movementBehavior = "free",
+  driftRange = 40,
+  driftDamping = 0.92,
+  driftOpacitySpeed = 0.006,
+  variableOpacity = false,
 }) {
   const canvasRef = useRef(null)
   const outerDivRef = useRef(null)
@@ -472,6 +627,11 @@ export default function ParticleLogo({
     pathDensity,
     scatter,
     gravity,
+    movementBehavior,
+    driftRange,
+    driftDamping,
+    driftOpacitySpeed,
+    variableOpacity,
   })
 
   const handleChange = useCallback((key, val) => {
@@ -484,6 +644,7 @@ export default function ParticleLogo({
     logoWidth: resolvedLogoWidth,
     _canvasW: canvasSize.w,
     _canvasH: canvasSize.h,
+    autoAssemble,
   }
 
   const { onEnter, onLeave } = useParticleEngine(canvasRef, engineConfig)
@@ -532,8 +693,8 @@ export default function ParticleLogo({
     <div
       ref={outerDivRef}
       style={{ position: "relative", width, height, background: backgroundColor, borderRadius: 8, overflow: "hidden" }}
-      onMouseMove={isClient ? handleMouseMove : undefined}
-      onMouseLeave={isClient ? handleMouseLeave : undefined}
+      onMouseMove={!autoAssemble && isClient ? handleMouseMove : undefined}
+      onMouseLeave={!autoAssemble && isClient ? handleMouseLeave : undefined}
     >
       {isClient && canvasSize.w > 0 && (
         <canvas

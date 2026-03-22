@@ -229,6 +229,39 @@ svg rect > .purple-cursor {
   max-width: 100%;
 }
 
+.reloadButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 8px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font: var(--body-small);
+  color: hsl(var(--grey-color));
+  cursor: pointer;
+  justify-self: center;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+@media (hover: hover) {
+  .reloadButton:hover {
+    color: hsl(var(--foreground-color));
+    background-color: hsl(var(--subtle-grey-color));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reloadButton {
+    transition: none;
+  }
+}
+
+.prototypeContainer {
+  display: grid;
+  gap: 12px;
+}
+
 .imageContainer {
   position: relative;
 }
