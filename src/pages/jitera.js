@@ -132,8 +132,15 @@ export default function Jitera() {
                             <div className={images}>
                                 <div
                                     className={clsx(imageWide, image)}
-                                    style={{ aspectRatio: "16/9", minHeight: "360px" }}
-                                />
+                                    style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
+                                >
+                                    <iframe
+                                        src="https://ai-chat-prototype.vercel.app/"
+                                        title="AI test generation prototype"
+                                        style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                                        loading="lazy"
+                                    />
+                                </div>
                             </div>
                         </div>
                         <div className={internalContainer}>
@@ -145,8 +152,15 @@ export default function Jitera() {
                             <div className={images}>
                                 <div
                                     className={clsx(imageWide, image)}
-                                    style={{ aspectRatio: "16/9", minHeight: "360px" }}
-                                />
+                                    style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
+                                >
+                                    <iframe
+                                        src="https://ai-chat-prototype.vercel.app/"
+                                        title="Manual test management prototype"
+                                        style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                                        loading="lazy"
+                                    />
+                                </div>
                             </div>
                         </div>
                         <div className={internalContainer}>
@@ -158,8 +172,15 @@ export default function Jitera() {
                             <div className={images}>
                                 <div
                                     className={clsx(imageWide, image)}
-                                    style={{ aspectRatio: "16/9", minHeight: "360px" }}
-                                />
+                                    style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
+                                >
+                                    <iframe
+                                        src="https://generation-progress-prototype.vercel.app/"
+                                        title="Database generation prototype"
+                                        style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                                        loading="lazy"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </section>
