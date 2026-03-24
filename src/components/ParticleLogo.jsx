@@ -363,8 +363,7 @@ function useParticleEngine(canvasRef, config) {
     stateRef.current.pathPoints = null
     stateRef.current.groupPoints = null
     stateRef.current.mode = "float"
-    const isMobile = typeof window !== "undefined" && window.innerWidth < 768
-    const count = Math.min(cfg.current.particleCount, isMobile ? 60 : 1000)
+    const count = Math.min(cfg.current.particleCount, 1000)
     initParticles(count, canvas.width, canvas.height)
   }, [config._canvasW, config._canvasH, canvasRef, initParticles])
 
@@ -375,8 +374,7 @@ function useParticleEngine(canvasRef, config) {
     prevCount.current = config.particleCount
     const canvas = canvasRef.current
     if (!canvas) return
-    const isMobile = typeof window !== "undefined" && window.innerWidth < 768
-    const count = Math.min(config.particleCount, isMobile ? 60 : 1000)
+    const count = Math.min(config.particleCount, 1000)
     stateRef.current.pathPoints = null
     stateRef.current.groupPoints = null
     stateRef.current.mode = "float"
@@ -396,8 +394,7 @@ function useParticleEngine(canvasRef, config) {
     stateRef.current.pathPoints = null
     stateRef.current.groupPoints = null
     stateRef.current.mode = "float"
-    const isMobile = typeof window !== "undefined" && window.innerWidth < 768
-    initParticles(Math.min(cfg.current.particleCount, isMobile ? 60 : 1000), canvas.width, canvas.height)
+    initParticles(Math.min(cfg.current.particleCount, 1000), canvas.width, canvas.height)
   }, [config.movementBehavior, canvasRef, initParticles])
 
   // Auto-assemble: when canvas is ready and autoAssemble=true, schedule assembly

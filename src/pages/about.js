@@ -83,7 +83,7 @@ function AboutPage() {
               <h2 className={clsx(h2Header, "allCaps deemphasized")}>Experience</h2>
               <div className={workPlaces}>
                 <div className={workPlace}>
-                  <h3 className={role}>Founding designer at Cuddlynest</h3>
+                  <h3 className={role}>Senior product designer at Cuddlynest</h3>
                   <div className={clsx(period, "deemphasized")}>
                     2025–now
                   </div>
@@ -92,7 +92,7 @@ function AboutPage() {
                   </div>
                 </div>
                 <div className={workPlace}>
-                  <h3 className={role}>Product designer at Jitera</h3>
+                  <h3 className={role}>Senior product designer at Jitera</h3>
                   <div className={clsx(period, "deemphasized")}>
                     2024–2025
                   </div>

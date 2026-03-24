@@ -31,6 +31,10 @@ import {
     image,
     reloadButton,
     prototypeContainer,
+    prototypeDesktopOnly,
+    mobileOnly,
+    prototypeDesktopMessage,
+    prototypeDesktopMessageIcon,
 } from "./styles/case.module.css"
 
 // Path data extracted from src/svg/jitera-logo.svg
@@ -43,9 +47,18 @@ const E_D = "M104.488 32.124V1.12402H123.488V6.96704L110.779 6.94534L110.698 13.
 const R_D = "M149.488 32.1186L143.155 18.4198C146.778 17.3076 149.398 13.8409 149.403 9.76106C149.409 5.68125 146.619 1.12402 140.468 1.12402H128.488V32.124H134.526L134.73 19.0491H137.095L142.968 32.124H149.488V32.1186ZM139.776 7.07012C142.192 7.07012 143.201 8.42101 143.201 10.0703C143.201 11.47 142.458 13.0705 139.601 13.0705H134.532L134.549 7.07012H139.776Z"
 const A_D = "M170.428 1.12402H162.593L153.488 32.124H159.051L161.752 22.843H161.758L162.086 21.7202H170.935L171.263 22.843H171.269L173.992 32.124H179.488L170.428 1.12402ZM163.774 15.9487L166.452 7.01484L169.242 15.9487H163.774Z"
 
+const DesktopOnlyMessage = () => (
+    <div className={clsx(mobileOnly, prototypeDesktopMessage)}>
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" className={prototypeDesktopMessageIcon}>
+            <path d="M30 22H21V30H11V22H2V2H30V22ZM14 27H18V22H14V27ZM5 19H27V5H5V19Z" fill="currentColor"/>
+        </svg>
+        <p>This prototype is designed for desktop — it won't display well on smaller screens.</p>
+    </div>
+)
+
 const ReloadIcon = () => (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M3 12.75C3 17.7206 7.02944 21.75 12 21.75C16.9706 21.75 21 17.7206 21 12.75C21 7.77944 16.9706 3.75 12 3.75C8.86954 3.75 6.11238 5.34826 4.5 7.77331M4.5 7.77331H10M4.5 7.77331V2.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" style={{display: 'block'}}>
+        <path d="M2.75 6.25636C3.57367 3.92597 5.79615 2.25636 8.40859 2.25636C11.7223 2.25636 14.4086 4.94265 14.4086 8.25636C14.4086 11.5701 11.7223 14.2564 8.40859 14.2564C6.63159 14.2564 5.03502 13.4839 3.93638 12.2564C3.74473 12.0422 3.56824 11.8143 3.40859 11.5742M2.75 6.25636H8.40859M2.75 6.25636V0.257812" stroke="currentColor" strokeWidth="1.5"/>
     </svg>
 )
 
@@ -54,6 +67,7 @@ export default function Jitera() {
     const reload = (i) => setProtoKeys(k => k.map((v, idx) => idx === i ? v + 1 : v))
 
     const preferredTheme = useMediaPredicate('(prefers-color-scheme: dark)') ? 'dark' : 'light'
+    const isDesktop = useMediaPredicate('(min-width: 600px)')
     const subtleGrey = preferredTheme === 'dark' ? 'hsl(209, 6%, 48%)' : 'hsl(209, 8%, 71%)'
     const JITERA_PATH_GROUPS = [
         { paths: [RIGHT_CHEVRON_D],                       color: "hsla(236, 100%, 51%, 1.0)", weight: 2 },
@@ -71,7 +85,7 @@ export default function Jitera() {
                     className={aboveTheFoldImage}
                     width="100%"
                     height="100%"
-                    logoWidth={0.45}
+                    logoWidth={isDesktop ? 0.45 : 0.9}
                     showPanel={false}
                     backgroundColor="var(--subtle-grey-color)"
                     svgViewBox="0 0 180 34"
@@ -145,7 +159,8 @@ export default function Jitera() {
                                 </p>
                             </div>
                             <div className={prototypeContainer}>
-                                <div className={images}>
+                                <DesktopOnlyMessage />
+                                <div className={clsx(images, prototypeDesktopOnly)}>
                                     <div
                                         className={clsx(imageWide, image)}
                                         style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
@@ -159,11 +174,11 @@ export default function Jitera() {
                                         />
                                     </div>
                                 </div>
-                                <button className={reloadButton} onClick={() => reload(0)} aria-label="Reload prototype">
+                                <button className={clsx(reloadButton, prototypeDesktopOnly)} onClick={() => reload(0)} aria-label="Reload prototype">
                                     <ReloadIcon />
                                     Reload prototype
                                 </button>
-                                <div className={paragraph}>
+                                <div className={clsx(paragraph, prototypeDesktopOnly)}>
                                     <div>
                                         Try it: <span className="deemphasized">Click the sparkles icon in the top right corner to open the agent panel. Type anything into the prompt — the content doesn't matter. The prototype shows how the interface keeps users informed throughout generation: what's being worked on, what's already done, and that something is always happening.</span>
                                     </div>
@@ -177,7 +192,8 @@ export default function Jitera() {
                                 </p>
                             </div>
                             <div className={prototypeContainer}>
-                                <div className={images}>
+                                <DesktopOnlyMessage />
+                                <div className={clsx(images, prototypeDesktopOnly)}>
                                     <div
                                         className={clsx(imageWide, image)}
                                         style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
@@ -191,11 +207,11 @@ export default function Jitera() {
                                         />
                                     </div>
                                 </div>
-                                <button className={reloadButton} onClick={() => reload(1)} aria-label="Reload prototype">
+                                <button className={clsx(reloadButton, prototypeDesktopOnly)} onClick={() => reload(1)} aria-label="Reload prototype">
                                     <ReloadIcon />
                                     Reload prototype
                                 </button>
-                                <div className={paragraph}>
+                                <div className={clsx(paragraph, prototypeDesktopOnly)}>
                                     <div>
                                         Try it: <span className="deemphasized">Almost everything has a keyboard shortcut — hover over any button to see it. When creating steps, you can save and move to the next one without touching the mouse. Once you have multiple steps in a test case, grab the drag handle on the left to reorder them. The goal was to make building a large test suite feel fast, not tedious.</span>
                                     </div>
@@ -209,7 +225,8 @@ export default function Jitera() {
                                 </p>
                             </div>
                             <div className={prototypeContainer}>
-                                <div className={images}>
+                                <DesktopOnlyMessage />
+                                <div className={clsx(images, prototypeDesktopOnly)}>
                                     <div
                                         className={clsx(imageWide, image)}
                                         style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
@@ -223,7 +240,7 @@ export default function Jitera() {
                                         />
                                     </div>
                                 </div>
-                                <button className={reloadButton} onClick={() => reload(2)} aria-label="Reload prototype">
+                                <button className={clsx(reloadButton, prototypeDesktopOnly)} onClick={() => reload(2)} aria-label="Reload prototype">
                                     <ReloadIcon />
                                     Reload prototype
                                 </button>

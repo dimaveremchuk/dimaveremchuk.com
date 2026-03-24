@@ -393,6 +393,46 @@ svg rect > .purple-cursor {
   }
 }
 
+/* Mobile / desktop visibility helpers for prototype sections */
+.prototypeDesktopOnly {
+  display: none;
+}
+
+.mobileOnly {
+  display: block;
+}
+
+.prototypeDesktopMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 56px 24px;
+  background-color: hsl(var(--subtle-grey-color));
+  color: hsl(var(--grey-color));
+  font: var(--body);
+  text-align: center;
+}
+
+.prototypeDesktopMessageIcon {
+  opacity: 0.5;
+  flex-shrink: 0;
+  display: block;
+}
+
+@media screen and (min-width: 600px) {
+  .prototypeDesktopOnly {
+    display: revert;
+  }
+  button.prototypeDesktopOnly {
+    display: inline-flex;
+  }
+  .mobileOnly {
+    display: none;
+  }
+}
+
 @keyframes Reel {
   0% {
     z-index: 10;

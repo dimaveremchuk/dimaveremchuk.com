@@ -62,6 +62,7 @@ const A_D = "M170.428 1.12402H162.593L153.488 32.124H159.051L161.752 22.843H161.
 
 function IndexPage() {
   const preferredTheme = useMediaPredicate('(prefers-color-scheme: dark)') ? 'dark' : 'light'
+  const isMobile = useMediaPredicate('(max-width: 767px)')
 
   const subtleGrey = preferredTheme === 'dark' ? 'hsl(209, 6%, 48%)' : 'hsl(209, 8%, 71%)'
   const JITERA_PATH_GROUPS = [
@@ -208,6 +209,7 @@ function IndexPage() {
                   scatter={0.8}
                   gravity={0.002}
                   pathDensity={730}
+                  autoAssemble={isMobile}
                   movementBehavior="drift"
                   driftRange={90}
                   driftDamping={0.46}
