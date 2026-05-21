@@ -155,6 +155,40 @@ export default function Jitera() {
                         <div className={internalContainer}>
                             <div className={leftAligned}>
                                 <p className={highlight}>
+                                  <p>Batch processing. <span className="deemphasized">The problem: AI agents work well for one task at a time. Repeating the same action across hundreds of documents breaks down — the chat becomes unusable, progress is invisible, and there's no way to pause or recover from errors. </span></p> <br/>
+                                  <span className="deemphasized">I designed a dedicated batch mode that keeps the experience contained and controllable. Users define a prompt template with variable placeholders, let the AI populate the document list from a natural language query, then execute and monitor from a compact interface that doesn't take over the screen. The modal minimizes into a widget while running, and when complete, collapses into a permanent record in the chat thread.</span>
+                                </p>
+                            </div>
+                            <div className={prototypeContainer}>
+                                <DesktopOnlyMessage />
+                                <div className={clsx(images, prototypeDesktopOnly)}>
+                                    <div
+                                        className={clsx(imageWide, image)}
+                                        style={{ aspectRatio: "16/9", minHeight: "360px", overflow: "hidden" }}
+                                    >
+                                        <iframe
+                                            key={protoKeys[0]}
+                                            src="https://jitera-batch.vercel.app/"
+                                            title="Batch processing prototype"
+                                            style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                </div>
+                                <button className={clsx(reloadButton, prototypeDesktopOnly)} onClick={() => reload(0)} aria-label="Reload prototype">
+                                    <ReloadIcon />
+                                    Reload prototype
+                                </button>
+                                <div className={clsx(paragraph, prototypeDesktopOnly)}>
+                                    <div>
+                                        Try it: <span className="deemphasized">Type anything into the input and submit—the agent will detect a batch task and open the configuration panel pre-filled. Review the prompt and document list, then click "Execute batch" to start. While running, close the modal to see the minimized widget above the input.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={internalContainer}>
+                            <div className={leftAligned}>
+                                <p className={highlight}>
                                     AI test generation. <span className="deemphasized">The problem: how do you show an AI agent generating tests in real time without the interface feeling broken? Users needed to understand the process was working, not frozen. I designed the interaction around a prompt-to-output flow with streaming feedback — so users could watch tests appear as the agent worked, step by step.</span>
                                 </p>
                             </div>
